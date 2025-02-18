@@ -1,6 +1,6 @@
 
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, Bike, ChargingPile, Tree, MapPin } from "lucide-react";
+import { Crown, Trophy, Medal, Bike, MapPin, TreeDeciduous } from "lucide-react";
 
 const Sections = () => {
   const leaderboardData = [
@@ -44,11 +44,11 @@ const Sections = () => {
   const getLocationIcon = (type: string) => {
     switch (type) {
       case 'charging':
-        return <ChargingPile className="w-6 h-6 text-blue-500" />;
+        return <MapPin className="w-6 h-6 text-blue-500" />; // Changed from ChargingPile to MapPin
       case 'bike':
         return <Bike className="w-6 h-6 text-green-500" />;
       case 'park':
-        return <Tree className="w-6 h-6 text-emerald-500" />;
+        return <TreeDeciduous className="w-6 h-6 text-emerald-500" />; // Changed from Tree to TreeDeciduous
       default:
         return <MapPin className="w-6 h-6 text-gray-500" />;
     }
@@ -112,7 +112,7 @@ const Sections = () => {
             <div className="space-y-6">
               <div className="flex items-center justify-center gap-8 mb-8">
                 <div className="flex items-center gap-2">
-                  <ChargingPile className="w-5 h-5 text-blue-500" />
+                  <MapPin className="w-5 h-5 text-blue-500" />
                   <span>Stazioni di ricarica</span>
                 </div>
                 <div className="flex items-center gap-2">
@@ -120,7 +120,7 @@ const Sections = () => {
                   <span>Noleggio bici</span>
                 </div>
                 <div className="flex items-center gap-2">
-                  <Tree className="w-5 h-5 text-emerald-500" />
+                  <TreeDeciduous className="w-5 h-5 text-emerald-500" />
                   <span>Parchi</span>
                 </div>
               </div>
