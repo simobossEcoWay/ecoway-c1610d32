@@ -48,7 +48,7 @@ const ChiSiamo = () => {
               </ul>
             </div>
             <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center">
-              <img alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-contain" src="/lovable-uploads/f5186caf-375d-48dd-8b88-7362884af40c.jpg" />
+              <img alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-contain" src="/lovable-uploads/6dc9aa9b-4a53-4263-8e48-29a6901852c7.png" />
             </div>
           </div>
         </div>
