@@ -1,6 +1,6 @@
-
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal } from "lucide-react";
+import Map from "./Map";
 
 const Sections = () => {
   const leaderboardData = [
@@ -84,10 +84,7 @@ const Sections = () => {
             </p>
           </div>
           <Card className="glass-panel p-8 rounded-2xl">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
-              <p className="text-neutral-600">La mappa interattiva sarà disponibile a breve!</p>
-            </div>
+            <Map />
           </Card>
         </div>
       </section>
