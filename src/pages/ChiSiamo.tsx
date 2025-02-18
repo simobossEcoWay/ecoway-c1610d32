@@ -54,11 +54,11 @@ const ChiSiamo = () => {
                 </li>
               </ul>
             </div>
-            <div className="glass-panel p-6 rounded-2xl order-1 md:order-2">
+            <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center">
               <img 
-                src="/placeholder.svg"
-                alt="I nostri valori"
-                className="w-full h-auto rounded-lg"
+                src="/lovable-uploads/8171377e-e3b3-49b9-bf17-ded32afcdc3e.png"
+                alt="I nostri valori - Logo EcoWay"
+                className="w-48 h-48 object-contain"
               />
             </div>
           </div>
