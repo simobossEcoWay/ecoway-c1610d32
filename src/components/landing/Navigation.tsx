@@ -1,9 +1,12 @@
+
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -13,14 +16,14 @@ const Navigation = () => {
       setIsMenuOpen(false);
     }
   };
+  
   return <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-[#5a8f67] rounded-full"></div>
-            <span className="text-xl font-semibold">
-              <span className="text-[#5a8f67]">E</span>co
-              <span className="text-[#5a8f67]">W</span>ay
+            <div className="w-8 h-8 bg-white rounded-full"></div>
+            <span className="text-xl font-semibold text-white">
+              Eco<span>Way</span>
             </span>
           </Link>
         </div>
@@ -74,4 +77,5 @@ const Navigation = () => {
         </motion.div>}
     </nav>;
 };
+
 export default Navigation;
