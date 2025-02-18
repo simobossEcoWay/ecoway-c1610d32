@@ -20,10 +20,10 @@ const Navigation = () => {
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
         <div className="flex items-center gap-2">
           <Link to="/" className="flex items-center gap-2">
-            <div className="w-8 h-8 bg-accent-green rounded-full"></div>
+            <div className="w-8 h-8 bg-[#5a8f67] rounded-full"></div>
             <span className="text-xl font-semibold">
-              <span className="text-accent-green">E</span>co
-              <span className="text-accent-green">W</span>ay
+              <span className="text-[#5a8f67]">E</span>co
+              <span className="text-[#5a8f67]">W</span>ay
             </span>
           </Link>
         </div>
