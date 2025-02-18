@@ -39,12 +39,18 @@ const CityMap = () => {
   const bikeIcon = createCustomIcon('#61AAF2');
   const parkIcon = createCustomIcon('#7EBF8E');
 
+  const darkPopupStyle = {
+    background: 'rgba(0, 0, 0, 0.8)',
+    color: 'white',
+    border: 'none',
+  };
+
   return (
     <div className="space-y-4">
       <div className="w-full h-[600px] relative rounded-xl overflow-hidden border border-white/10">
         <MapContainer
-          defaultCenter={[45.4642, 9.1900]}
-          defaultZoom={14}
+          center={[45.4642, 9.1900] as [number, number]}
+          zoom={14}
           className="w-full h-full"
         >
           <TileLayer 
@@ -54,10 +60,11 @@ const CityMap = () => {
           {locations.chargingStations.map((location, index) => (
             <Marker
               key={`charging-${index}`}
-              position={location.coordinates}
+              position={location.coordinates as [number, number]}
+              icon={chargingIcon}
             >
-              <Popup className="bg-black/80 text-white border-none">
-                {location.name}
+              <Popup>
+                <div style={darkPopupStyle}>{location.name}</div>
               </Popup>
             </Marker>
           ))}
@@ -65,10 +72,11 @@ const CityMap = () => {
           {locations.bikeRentals.map((location, index) => (
             <Marker
               key={`bike-${index}`}
-              position={location.coordinates}
+              position={location.coordinates as [number, number]}
+              icon={bikeIcon}
             >
-              <Popup className="bg-black/80 text-white border-none">
-                {location.name}
+              <Popup>
+                <div style={darkPopupStyle}>{location.name}</div>
               </Popup>
             </Marker>
           ))}
@@ -76,10 +84,11 @@ const CityMap = () => {
           {locations.parks.map((location, index) => (
             <Marker
               key={`park-${index}`}
-              position={location.coordinates}
+              position={location.coordinates as [number, number]}
+              icon={parkIcon}
             >
-              <Popup className="bg-black/80 text-white border-none">
-                {location.name}
+              <Popup>
+                <div style={darkPopupStyle}>{location.name}</div>
               </Popup>
             </Marker>
           ))}
