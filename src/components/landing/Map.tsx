@@ -1,92 +1,31 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React from 'react';
 import { Plug, Bike } from 'lucide-react';
 
 const Map = () => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const [mapboxToken, setMapboxToken] = useState('');
-
-  // Sample data for Lombardia
+  // Sample data for Milan
   const chargingStations = [
-    { lng: 9.1900, lat: 45.4642, name: "Milano Centrale EV" },
-    { lng: 9.6700, lat: 45.6982, name: "Bergamo Charging Hub" },
-    { lng: 10.2230, lat: 45.5416, name: "Brescia Station" },
-    { lng: 9.4027, lat: 45.8149, name: "Monza Electric" },
-    { lng: 9.1419, lat: 45.1866, name: "Pavia Power" }
+    { x: 40, y: 45, name: "Milano Centrale EV" },
+    { x: 65, y: 35, name: "Porta Garibaldi Power" },
+    { x: 30, y: 60, name: "Porta Romana Electric" },
+    { x: 75, y: 55, name: "Lambrate Charging" },
+    { x: 45, y: 75, name: "Navigli Power Station" }
   ];
 
   const bikeRentals = [
-    { lng: 9.1850, lat: 45.4700, name: "Milano Bikes" },
-    { lng: 9.6650, lat: 45.7000, name: "Bergamo Rental" },
-    { lng: 10.2180, lat: 45.5450, name: "Brescia Bikes" },
-    { lng: 9.4000, lat: 45.8200, name: "Monza Cycles" },
-    { lng: 9.1400, lat: 45.1900, name: "BikePavia" }
+    { x: 50, y: 50, name: "Duomo Bikes" },
+    { x: 35, y: 40, name: "Brera Rental" },
+    { x: 70, y: 45, name: "Isola Cycles" },
+    { x: 55, y: 65, name: "Navigli Bikes" },
+    { x: 25, y: 55, name: "Porta Venezia Rental" }
   ];
 
-  useEffect(() => {
-    if (!mapContainer.current) return;
-
-    // Initialize map
-    mapboxgl.accessToken = mapboxToken || 'YOUR_MAPBOX_TOKEN'; // Replace with your token
-    
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/streets-v12',
-      center: [9.1900, 45.4642], // Center on Milan
-      zoom: 7.5,
-    });
-
-    // Add markers for charging stations
-    chargingStations.forEach(station => {
-      // Create custom marker element
-      const el = document.createElement('div');
-      el.className = 'marker charging-station';
-      el.innerHTML = `<div class="w-8 h-8 bg-accent-blue rounded-full flex items-center justify-center shadow-lg">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M7 17h10V5H7v12Z" />
-          <path d="M11 8h2v3h-2z" />
-          <path d="M7 5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3" />
-          <path d="M17 5h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-3" />
-        </svg>
-      </div>`;
-
-      new mapboxgl.Marker(el)
-        .setLngLat([station.lng, station.lat])
-        .setPopup(new mapboxgl.Popup({ offset: 25 })
-          .setHTML(`<h3 class="font-medium">${station.name}</h3><p>Stazione di ricarica</p>`))
-        .addTo(map.current);
-    });
-
-    // Add markers for bike rentals
-    bikeRentals.forEach(rental => {
-      const el = document.createElement('div');
-      el.className = 'marker bike-rental';
-      el.innerHTML = `<div class="w-8 h-8 bg-accent-green rounded-full flex items-center justify-center shadow-lg">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <circle cx="18.5" cy="17.5" r="3.5"/>
-          <circle cx="5.5" cy="17.5" r="3.5"/>
-          <circle cx="15" cy="5" r="1"/>
-          <path d="M12 17.5V14l-3-3 4-3 2 3h2"/>
-        </svg>
-      </div>`;
-
-      new mapboxgl.Marker(el)
-        .setLngLat([rental.lng, rental.lat])
-        .setPopup(new mapboxgl.Popup({ offset: 25 })
-          .setHTML(`<h3 class="font-medium">${rental.name}</h3><p>Noleggio biciclette</p>`))
-        .addTo(map.current);
-    });
-
-    // Add navigation control
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-    return () => {
-      map.current?.remove();
-    };
-  }, [mapboxToken]);
+  const handleMarkerHover = (event: React.MouseEvent<HTMLDivElement>, name: string) => {
+    const tooltip = event.currentTarget.querySelector('.tooltip');
+    if (tooltip) {
+      tooltip.classList.toggle('opacity-0');
+    }
+  };
 
   return (
     <div className="relative">
@@ -106,23 +45,66 @@ const Map = () => {
           </div>
         </div>
       </div>
-      <div 
-        ref={mapContainer} 
-        className="w-full h-[600px] rounded-xl overflow-hidden shadow-lg"
-      />
-      {!mapboxToken && (
-        <div className="mt-4">
-          <input
-            type="text"
-            placeholder="Inserisci il tuo Mapbox token"
-            className="w-full p-2 border rounded"
-            onChange={(e) => setMapboxToken(e.target.value)}
-          />
-          <p className="text-sm text-neutral-600 mt-2">
-            Visita mapbox.com per ottenere il tuo token pubblico
-          </p>
+      <div className="relative w-full h-[600px] bg-neutral-100 rounded-xl overflow-hidden shadow-lg">
+        {/* Grid lines for visual reference */}
+        <div className="absolute inset-0 grid grid-cols-20 grid-rows-20">
+          {Array.from({ length: 400 }).map((_, i) => (
+            <div key={i} className="border border-neutral-200" />
+          ))}
         </div>
-      )}
+
+        {/* Main districts */}
+        <div className="absolute inset-10 bg-white/50 rounded-lg shadow-inner" />
+        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-accent-purple/10 rounded-full flex items-center justify-center">
+          <span className="text-sm font-medium">Duomo</span>
+        </div>
+
+        {/* Charging stations */}
+        {chargingStations.map((station, index) => (
+          <div
+            key={`charging-${index}`}
+            className="absolute"
+            style={{ left: `${station.x}%`, top: `${station.y}%` }}
+            onMouseEnter={(e) => handleMarkerHover(e, station.name)}
+            onMouseLeave={(e) => handleMarkerHover(e, station.name)}
+          >
+            <div className="w-8 h-8 bg-accent-blue rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2">
+              <Plug className="w-4 h-4 text-white" />
+            </div>
+            <div className="tooltip opacity-0 transition-opacity absolute left-1/2 -translate-x-1/2 bottom-full mb-2 bg-white px-2 py-1 rounded shadow-lg text-sm whitespace-nowrap">
+              {station.name}
+            </div>
+          </div>
+        ))}
+
+        {/* Bike rentals */}
+        {bikeRentals.map((rental, index) => (
+          <div
+            key={`bike-${index}`}
+            className="absolute"
+            style={{ left: `${rental.x}%`, top: `${rental.y}%` }}
+            onMouseEnter={(e) => handleMarkerHover(e, rental.name)}
+            onMouseLeave={(e) => handleMarkerHover(e, rental.name)}
+          >
+            <div className="w-8 h-8 bg-accent-green rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2">
+              <Bike className="w-4 h-4 text-white" />
+            </div>
+            <div className="tooltip opacity-0 transition-opacity absolute left-1/2 -translate-x-1/2 bottom-full mb-2 bg-white px-2 py-1 rounded shadow-lg text-sm whitespace-nowrap">
+              {rental.name}
+            </div>
+          </div>
+        ))}
+
+        {/* Major roads */}
+        <div className="absolute inset-0">
+          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-neutral-200 transform -translate-x-1/2" />
+          <div className="absolute top-1/2 left-0 right-0 h-1 bg-neutral-200 transform -translate-y-1/2" />
+          <div className="absolute left-1/4 top-0 bottom-0 w-px bg-neutral-200" />
+          <div className="absolute left-3/4 top-0 bottom-0 w-px bg-neutral-200" />
+          <div className="absolute top-1/4 left-0 right-0 h-px bg-neutral-200" />
+          <div className="absolute top-3/4 left-0 right-0 h-px bg-neutral-200" />
+        </div>
+      </div>
     </div>
   );
 };
