@@ -1,7 +1,10 @@
+
 import Navigation from "@/components/landing/Navigation";
 import Footer from "@/components/landing/Footer";
+
 const ChiSiamo = () => {
-  return <div className="min-h-screen bg-[#121212]">
+  return (
+    <div className="min-h-screen bg-[#121212]">
       <Navigation />
       <section className="pt-32 pb-24">
         <div className="container-padding">
@@ -25,7 +28,11 @@ const ChiSiamo = () => {
               </p>
             </div>
             <div className="glass-panel p-6 rounded-2xl">
-              <img alt="La nostra missione" className="w-full h-auto rounded-lg" src="/lovable-uploads/41a31c34-ce3f-413a-b88d-ef7a956cd7f0.jpg" />
+              <img 
+                src="/placeholder.svg"
+                alt="La nostra missione"
+                className="w-full h-auto rounded-lg"
+              />
             </div>
           </div>
 
@@ -47,13 +54,19 @@ const ChiSiamo = () => {
                 </li>
               </ul>
             </div>
-            <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center px-[12px]">
-              <img alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-fill" src="/lovable-uploads/e0d9a131-a1fc-4f33-bc9f-f37b5a5a1158.jpg" />
+            <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center">
+              <img 
+                src="/lovable-uploads/8171377e-e3b3-49b9-bf17-ded32afcdc3e.png"
+                alt="I nostri valori - Logo EcoWay"
+                className="w-48 h-48 object-contain"
+              />
             </div>
           </div>
         </div>
       </section>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default ChiSiamo;
