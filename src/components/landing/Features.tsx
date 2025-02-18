@@ -45,7 +45,7 @@ const Features = () => {
                 ))}
               </ul>
               <div className="mt-8 flex gap-4">
-                <button className="button-primary">Start 14-day trial</button>
+                <button className="button-primary">Ottieni BASE</button>
                 <button className="px-6 py-3 text-neutral-600 hover:text-primary transition-colors">
                   Contact Sales
                 </button>
