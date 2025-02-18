@@ -12,7 +12,7 @@ const Features = () => {
     {
       title: "PLUS",
       description: "Ottimizza la tua esperienza",
-      points: ["Smart Audience Segmentation", "Predictive Performance", "Real-time Visualization"]
+      points: ["No pubblicità", "Predictive Performance", "Real-time Visualization"]
     }
   ];
 
