@@ -6,11 +6,11 @@ import { motion } from "framer-motion";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const scrollToFeatures = () => {
-    const featuresElement = document.querySelector('.text-accent-purple');
-    if (featuresElement) {
-      featuresElement.scrollIntoView({ behavior: 'smooth' });
-      setIsMenuOpen(false); // Close mobile menu if open
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false);
     }
   };
 
@@ -24,16 +24,16 @@ const Navigation = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium">Classifica</a>
-          <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium">Mappa</a>
-          <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium">Ricompense</a>
+          <button onClick={() => scrollToSection('classifica')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Classifica</button>
+          <button onClick={() => scrollToSection('mappa')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Mappa</button>
+          <button onClick={() => scrollToSection('ricompense')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Ricompense</button>
         </div>
         
         <div className="hidden md:flex items-center gap-4">
           <button className="px-4 py-2 text-primary hover:text-primary/80 transition-colors font-medium">
             Accedi
           </button>
-          <button className="button-secondary" onClick={scrollToFeatures}>
+          <button className="button-secondary" onClick={() => scrollToSection('features')}>
             Piani
           </button>
         </div>
@@ -56,14 +56,14 @@ const Navigation = () => {
           transition={{ duration: 0.2 }}
         >
           <div className="flex flex-col gap-4">
-            <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Classifica</a>
-            <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Mappa</a>
-            <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Ricompense</a>
+            <button onClick={() => scrollToSection('classifica')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Classifica</button>
+            <button onClick={() => scrollToSection('mappa')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Mappa</button>
+            <button onClick={() => scrollToSection('ricompense')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Ricompense</button>
             <hr className="border-neutral-200" />
             <button className="text-primary hover:text-primary/80 transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">
               Accedi
             </button>
-            <button className="button-secondary w-full" onClick={scrollToFeatures}>
+            <button className="button-secondary w-full" onClick={() => scrollToSection('features')}>
               Piani
             </button>
           </div>
