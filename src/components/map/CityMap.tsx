@@ -29,17 +29,17 @@ const CityMap = () => {
         <div 
           className="absolute inset-0 bg-cover bg-center"
           style={{
-            backgroundImage: 'url("/lovable-uploads/9faecf6a-705a-4ff7-8e11-57c96658293e.jpg")',
-            filter: 'brightness(0.9) contrast(1.1)'
+            backgroundImage: 'url("/lovable-uploads/41a31c34-ce3f-413a-b88d-ef7a956cd7f0.jpg")',
+            filter: 'brightness(1) contrast(1)'
           }}
         />
         
         {/* Overlay for better readability */}
-        <div className="absolute inset-0 bg-black/10" />
+        <div className="absolute inset-0 bg-black/5" />
 
         {/* City Label */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <div className="text-4xl font-bold bg-white/80 px-6 py-2 rounded-full shadow-sm text-neutral-800">
+        <div className="absolute top-6 left-1/2 -translate-x-1/2">
+          <div className="text-4xl font-bold bg-white/90 px-6 py-2 rounded-full shadow-sm text-neutral-800">
             Tua Città
           </div>
         </div>
