@@ -65,8 +65,8 @@ const CityMap = () => {
               className="absolute group"
               style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-purple flex items-center justify-center cursor-pointer shadow-lg">
-                <MapPin className="w-6 h-6 text-accent-purple" />
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center cursor-pointer shadow-lg">
+                <MapPin className="w-6 h-6 text-[#ea384c]" />
               </div>
               <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
                 {location.name}
@@ -108,8 +108,8 @@ const CityMap = () => {
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-purple flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-accent-purple" />
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center">
+            <MapPin className="w-5 h-5 text-[#ea384c]" />
           </div>
           <span className="text-sm">Stazioni di ricarica</span>
         </div>
