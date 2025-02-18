@@ -1,6 +1,8 @@
+
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal, User } from "lucide-react";
 import CityMap from "@/components/map/CityMap";
+
 const Sections = () => {
   const leaderboardData = [{
     position: 1,
@@ -53,6 +55,7 @@ const Sections = () => {
     points: 789,
     city: "Bari"
   }];
+
   const getPositionIcon = (position: number) => {
     switch (position) {
       case 1:
@@ -65,6 +68,7 @@ const Sections = () => {
         return <User className="w-5 h-5 text-neutral-600" />;
     }
   };
+
   return <>
       {/* Classifica Section */}
       <section id="classifica" className="py-24 min-h-screen">
@@ -179,10 +183,6 @@ const Sections = () => {
                 <div className="text-4xl font-bold mb-6 text-white">€4.99<span className="text-lg text-neutral-400">/mese</span></div>
                 <ul className="text-left space-y-4 mb-8 text-neutral-200">
                   <li className="flex items-center gap-2">
-                    <Crown className="w-5 h-5 text-accent-purple" />
-                    Tutto del piano base
-                  </li>
-                  <li className="flex items-center gap-2">
                     <Trophy className="w-5 h-5 text-accent-purple" />
                     Sfide premium
                   </li>
@@ -199,4 +199,5 @@ const Sections = () => {
       </section>
     </>;
 };
+
 export default Sections;
