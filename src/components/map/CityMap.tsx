@@ -1,26 +1,23 @@
 
 import React from 'react';
-import { MapPin, Bike, TreeDeciduous } from 'lucide-react';
+import { TreeDeciduous, Trees } from 'lucide-react';
 
 const CityMap = () => {
-  // Sample data for Milan locations
-  const locations = {
-    chargingStations: [
-      { name: "Stazione di ricarica Centro", coordinates: { x: 45, y: 45 } },
-      { name: "Stazione di ricarica Navigli", coordinates: { x: 25, y: 65 } },
-      { name: "Stazione di ricarica Garibaldi", coordinates: { x: 65, y: 25 } }
-    ],
-    bikeRentals: [
-      { name: "Noleggio Bici Duomo", coordinates: { x: 50, y: 50 } },
-      { name: "Noleggio Bici Centrale", coordinates: { x: 30, y: 30 } },
-      { name: "Noleggio Bici Sempione", coordinates: { x: 70, y: 70 } }
-    ],
-    parks: [
-      { name: "Parco Sempione", coordinates: { x: 20, y: 40 } },
-      { name: "Giardini Pubblici", coordinates: { x: 60, y: 35 } },
-      { name: "Parco Biblioteca degli Alberi", coordinates: { x: 80, y: 55 } }
-    ]
-  };
+  // Sample data for Milan parks based on visible green areas in the image
+  const parks = [
+    { name: "Parco Sempione", coordinates: { x: 35, y: 32 }, size: "large" },
+    { name: "Giardini Pubblici Indro Montanelli", coordinates: { x: 68, y: 28 }, size: "large" },
+    { name: "Parco Biblioteca degli Alberi", coordinates: { x: 58, y: 22 }, size: "medium" },
+    { name: "Giardini della Guastalla", coordinates: { x: 52, y: 48 }, size: "small" },
+    { name: "Parco delle Basiliche", coordinates: { x: 45, y: 62 }, size: "medium" },
+    { name: "Parco Ravizza", coordinates: { x: 42, y: 75 }, size: "medium" },
+    { name: "Giardini Pubblici di Porta Venezia", coordinates: { x: 72, y: 35 }, size: "medium" },
+    { name: "Parco Solari", coordinates: { x: 28, y: 58 }, size: "small" },
+    { name: "Giardino della Rotonda della Besana", coordinates: { x: 62, y: 52 }, size: "small" },
+    { name: "Parco Don Giussani", coordinates: { x: 22, y: 45 }, size: "medium" },
+    { name: "Giardini di Via Palestro", coordinates: { x: 65, y: 32 }, size: "small" },
+    { name: "Parco Papa Giovanni Paolo II", coordinates: { x: 32, y: 68 }, size: "medium" }
+  ];
 
   return (
     <div className="space-y-4">
@@ -32,48 +29,27 @@ const CityMap = () => {
           className="w-full h-full object-cover opacity-80"
         />
         
-        {/* Points of Interest */}
-        {locations.chargingStations.map((location, index) => (
-          <div
-            key={`charging-${index}`}
-            className="absolute group"
-            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
-          >
-            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-[#ea384c] flex items-center justify-center cursor-pointer">
-              <MapPin className="w-6 h-6 text-[#ea384c]" />
-            </div>
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-              {location.name}
-            </div>
-          </div>
-        ))}
-
-        {locations.bikeRentals.map((location, index) => (
-          <div
-            key={`bike-${index}`}
-            className="absolute group"
-            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
-          >
-            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-accent-blue flex items-center justify-center cursor-pointer">
-              <Bike className="w-6 h-6 text-accent-blue" />
-            </div>
-            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-              {location.name}
-            </div>
-          </div>
-        ))}
-
-        {locations.parks.map((location, index) => (
+        {/* Parks */}
+        {parks.map((park, index) => (
           <div
             key={`park-${index}`}
             className="absolute group"
-            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+            style={{ left: `${park.coordinates.x}%`, top: `${park.coordinates.y}%` }}
           >
-            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-accent-green flex items-center justify-center cursor-pointer">
-              <TreeDeciduous className="w-6 h-6 text-accent-green" />
+            <div className={`
+              w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full 
+              bg-black/40 border border-accent-green 
+              flex items-center justify-center cursor-pointer
+              ${park.size === 'large' ? 'scale-125' : park.size === 'small' ? 'scale-75' : ''}
+            `}>
+              {park.size === 'large' ? (
+                <Trees className="w-6 h-6 text-accent-green" />
+              ) : (
+                <TreeDeciduous className="w-6 h-6 text-accent-green" />
+              )}
             </div>
             <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
-              {location.name}
+              {park.name}
             </div>
           </div>
         ))}
@@ -81,22 +57,16 @@ const CityMap = () => {
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-black/40 border border-[#ea384c] flex items-center justify-center">
-            <MapPin className="w-5 h-5 text-[#ea384c]" />
+          <div className="w-8 h-8 rounded-full bg-black/40 border border-accent-green flex items-center justify-center">
+            <Trees className="w-5 h-5 text-accent-green" />
           </div>
-          <span className="text-sm text-neutral-300">Stazioni di ricarica</span>
-        </div>
-        <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-black/40 border border-accent-blue flex items-center justify-center">
-            <Bike className="w-5 h-5 text-accent-blue" />
-          </div>
-          <span className="text-sm text-neutral-300">Noleggio bici</span>
+          <span className="text-sm text-neutral-300">Parchi Maggiori</span>
         </div>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-black/40 border border-accent-green flex items-center justify-center">
             <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
-          <span className="text-sm text-neutral-300">Parchi</span>
+          <span className="text-sm text-neutral-300">Parchi e Giardini</span>
         </div>
       </div>
     </div>
