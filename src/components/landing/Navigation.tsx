@@ -26,7 +26,7 @@ const Navigation = () => {
     setIsMenuOpen(false);
   };
   
-  const navLinkClass = "text-white font-medium px-3 py-1.5 rounded-full hover:bg-white/80 backdrop-blur-sm transition-all duration-200 shadow-sm hover:text-neutral-900";
+  const navLinkClass = "text-white font-medium px-3 py-1.5 rounded-full hover:bg-[#5a8f67] backdrop-blur-sm transition-all duration-200 shadow-sm hover:text-white hover:scale-110";
   
   return <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
@@ -73,10 +73,10 @@ const Navigation = () => {
       duration: 0.2
     }}>
           <div className="flex flex-col gap-4">
-            <Link to="/chi-siamo" className="text-white hover:text-neutral-900 font-medium px-4 py-2 hover:bg-white/80 rounded-lg transition-all">Chi siamo</Link>
-            <button onClick={() => handleNavigation('classifica')} className="text-white hover:text-neutral-900 font-medium px-4 py-2 hover:bg-white/80 rounded-lg transition-all text-left">Classifica</button>
-            <button onClick={() => handleNavigation('mappa')} className="text-white hover:text-neutral-900 font-medium px-4 py-2 hover:bg-white/80 rounded-lg transition-all text-left">Mappa</button>
-            <button onClick={() => handleNavigation('ricompense')} className="text-white hover:text-neutral-900 font-medium px-4 py-2 hover:bg-white/80 rounded-lg transition-all text-left">Ricompense</button>
+            <Link to="/chi-siamo" className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all hover:scale-105">Chi siamo</Link>
+            <button onClick={() => handleNavigation('classifica')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Classifica</button>
+            <button onClick={() => handleNavigation('mappa')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Mappa</button>
+            <button onClick={() => handleNavigation('ricompense')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Ricompense</button>
             <hr className="border-white/10" />
             <button className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
               Accedi
