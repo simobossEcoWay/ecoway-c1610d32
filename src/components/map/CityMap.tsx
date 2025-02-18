@@ -43,9 +43,10 @@ const CityMap = () => {
     <div className="space-y-4">
       <div className="w-full h-[600px] relative rounded-xl overflow-hidden">
         <MapContainer
-          center={[45.4642, 9.1900]}
+          center={[45.4642, 9.1900] as [number, number]}
           zoom={14}
           className="w-full h-full"
+          scrollWheelZoom={false}
         >
           <TileLayer
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -55,8 +56,8 @@ const CityMap = () => {
           {locations.chargingStations.map((location, index) => (
             <Marker
               key={`charging-${index}`}
-              position={location.coordinates}
-              icon={chargingIcon}
+              position={location.coordinates as [number, number]}
+              icon={chargingIcon as any}
             >
               <Popup>{location.name}</Popup>
             </Marker>
@@ -65,8 +66,8 @@ const CityMap = () => {
           {locations.bikeRentals.map((location, index) => (
             <Marker
               key={`bike-${index}`}
-              position={location.coordinates}
-              icon={bikeIcon}
+              position={location.coordinates as [number, number]}
+              icon={bikeIcon as any}
             >
               <Popup>{location.name}</Popup>
             </Marker>
@@ -75,8 +76,8 @@ const CityMap = () => {
           {locations.parks.map((location, index) => (
             <Marker
               key={`park-${index}`}
-              position={location.coordinates}
-              icon={parkIcon}
+              position={location.coordinates as [number, number]}
+              icon={parkIcon as any}
             >
               <Popup>{location.name}</Popup>
             </Marker>
@@ -86,22 +87,22 @@ const CityMap = () => {
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-[#ea384c] flex items-center justify-center">
             <MapPin className="w-5 h-5 text-[#ea384c]" />
           </div>
-          <span className="text-sm">Stazioni di ricarica</span>
+          <span className="text-sm text-white">Stazioni di ricarica</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-accent-blue flex items-center justify-center">
             <Bike className="w-5 h-5 text-accent-blue" />
           </div>
-          <span className="text-sm">Noleggio bici</span>
+          <span className="text-sm text-white">Noleggio bici</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-green flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-accent-green flex items-center justify-center">
             <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
-          <span className="text-sm">Parchi</span>
+          <span className="text-sm text-white">Parchi</span>
         </div>
       </div>
     </div>
