@@ -1,5 +1,6 @@
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal } from "lucide-react";
+import CityMap from "@/components/map/CityMap";
 
 const Sections = () => {
   const leaderboardData = [
@@ -82,11 +83,8 @@ const Sections = () => {
               Scopri punti di interesse e percorsi sostenibili nella tua zona
             </p>
           </div>
-          <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
-            <div className="text-center">
-              <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
-              <p className="text-neutral-600">La mappa interattiva sarà disponibile a breve!</p>
-            </div>
+          <Card className="glass-panel p-8 rounded-2xl max-w-5xl mx-auto">
+            <CityMap />
           </Card>
         </div>
       </section>
