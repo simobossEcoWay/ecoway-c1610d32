@@ -7,7 +7,7 @@ const Features = () => {
     {
       title: "BASE",
       description: "Sostenibilità senza costi, solo benefici",
-      points: ["Smart Task Assignment", "Real-time Collaboration", "Data Security & Privacy"]
+      points: ["Mappe", "Sfide", "Sconti"]
     },
     {
       title: "Advanced Analytics",
