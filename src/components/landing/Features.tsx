@@ -49,7 +49,7 @@ const Features = () => {
                   {`Ottieni ${feature.title}`}
                 </button>
                 <button className="px-6 py-3 text-neutral-600 hover:text-primary transition-colors">
-                  Contact Sales
+                  Assistenza
                 </button>
               </div>
             </div>
