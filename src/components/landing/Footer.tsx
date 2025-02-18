@@ -1,3 +1,4 @@
+
 const Footer = () => {
   return (
     <footer className="border-t border-neutral-200 bg-white">
@@ -6,7 +7,7 @@ const Footer = () => {
           <div>
             <div className="flex items-center gap-2 mb-6">
               <div className="w-8 h-8 bg-primary rounded-full"></div>
-              <span className="text-xl font-semibold">Lovely</span>
+              <span className="text-xl font-semibold">Ecoway</span>
             </div>
             <p className="text-neutral-600 text-sm">
               Modern SaaS Platform for Businesses
@@ -16,8 +17,8 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Product</h4>
             <ul className="space-y-3 text-sm text-neutral-600">
-              <li><a href="#" className="hover:text-primary transition-colors">Features</a></li>
-              <li><a href="#" className="hover:text-primary transition-colors">Pricing</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Classifica</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Mappa</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Documentation</a></li>
             </ul>
           </div>
@@ -25,7 +26,7 @@ const Footer = () => {
           <div>
             <h4 className="font-semibold mb-4">Company</h4>
             <ul className="space-y-3 text-sm text-neutral-600">
-              <li><a href="#" className="hover:text-primary transition-colors">About</a></li>
+              <li><a href="#" className="hover:text-primary transition-colors">Ricompense</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Blog</a></li>
               <li><a href="#" className="hover:text-primary transition-colors">Careers</a></li>
             </ul>
@@ -43,7 +44,7 @@ const Footer = () => {
 
         <div className="border-t border-neutral-200 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-sm text-neutral-600">
-            © 2024 Lovely. All rights reserved.
+            © 2024 Ecoway. All rights reserved.
           </p>
           <div className="flex gap-6">
             <a href="#" className="text-neutral-600 hover:text-primary transition-colors">

@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
@@ -10,14 +11,14 @@ const Navigation = () => {
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 bg-primary rounded-full"></div>
-          <span className="text-xl font-semibold">Lovely</span>
+          <span className="text-xl font-semibold">Ecoway</span>
         </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
-          <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium">Features</a>
-          <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium">Pricing</a>
-          <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium">About</a>
+          <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium">Classifica</a>
+          <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium">Mappa</a>
+          <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium">Ricompense</a>
         </div>
         
         <div className="hidden md:flex items-center gap-4">
@@ -47,9 +48,9 @@ const Navigation = () => {
           transition={{ duration: 0.2 }}
         >
           <div className="flex flex-col gap-4">
-            <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Features</a>
-            <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Pricing</a>
-            <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">About</a>
+            <a href="#features" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Classifica</a>
+            <a href="#pricing" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Mappa</a>
+            <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Ricompense</a>
             <hr className="border-neutral-200" />
             <button className="text-primary hover:text-primary/80 transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">
               Log in
