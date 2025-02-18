@@ -1,8 +1,6 @@
-
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal, User } from "lucide-react";
 import CityMap from "@/components/map/CityMap";
-
 const Sections = () => {
   const leaderboardData = [{
     position: 1,
@@ -55,7 +53,6 @@ const Sections = () => {
     points: 789,
     city: "Bari"
   }];
-
   const getPositionIcon = (position: number) => {
     switch (position) {
       case 1:
@@ -68,7 +65,6 @@ const Sections = () => {
         return <User className="w-5 h-5 text-neutral-600" />;
     }
   };
-
   return <>
       {/* Classifica Section */}
       <section id="classifica" className="py-24 min-h-screen">
@@ -113,7 +109,7 @@ const Sections = () => {
             <span className="bg-accent-purple/10 text-accent-purple px-4 py-1.5 rounded-full text-sm font-medium">
               MAPPA
             </span>
-            <h2 className="heading-lg mt-6">Esplora la Tua Città</h2>
+            <h2 className="heading-lg mt-6 text-zinc-950">Esplora la Tua Città</h2>
             <p className="text-neutral-600 mt-4 max-w-2xl mx-auto">
               Scopri punti di interesse e percorsi sostenibili nella tua zona
             </p>
@@ -199,5 +195,4 @@ const Sections = () => {
       </section>
     </>;
 };
-
 export default Sections;
