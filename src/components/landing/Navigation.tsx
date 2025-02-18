@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { Menu } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,12 +19,15 @@ const Navigation = () => {
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 bg-primary rounded-full"></div>
-          <span className="text-xl font-semibold">EcoWay</span>
+          <Link to="/" className="flex items-center gap-2">
+            <div className="w-8 h-8 bg-primary rounded-full"></div>
+            <span className="text-xl font-semibold">EcoWay</span>
+          </Link>
         </div>
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-8">
+          <Link to="/chi-siamo" className="text-neutral-600 hover:text-primary transition-colors font-medium">Chi siamo</Link>
           <button onClick={() => scrollToSection('classifica')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Classifica</button>
           <button onClick={() => scrollToSection('mappa')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Mappa</button>
           <button onClick={() => scrollToSection('ricompense')} className="text-neutral-600 hover:text-primary transition-colors font-medium">Ricompense</button>
@@ -56,6 +60,7 @@ const Navigation = () => {
           transition={{ duration: 0.2 }}
         >
           <div className="flex flex-col gap-4">
+            <Link to="/chi-siamo" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Chi siamo</Link>
             <button onClick={() => scrollToSection('classifica')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Classifica</button>
             <button onClick={() => scrollToSection('mappa')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Mappa</button>
             <button onClick={() => scrollToSection('ricompense')} className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">Ricompense</button>
@@ -74,4 +79,3 @@ const Navigation = () => {
 };
 
 export default Navigation;
-
