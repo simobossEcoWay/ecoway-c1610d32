@@ -1,8 +1,6 @@
-
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal, User } from "lucide-react";
 import CityMap from "@/components/map/CityMap";
-
 const Sections = () => {
   const leaderboardData = [{
     position: 1,
@@ -55,7 +53,6 @@ const Sections = () => {
     points: 789,
     city: "Bari"
   }];
-
   const getPositionIcon = (position: number) => {
     switch (position) {
       case 1:
@@ -68,7 +65,6 @@ const Sections = () => {
         return <User className="w-5 h-5 text-neutral-600" />;
     }
   };
-
   return <>
       {/* Classifica Section */}
       <section id="classifica" className="py-24 min-h-screen">
@@ -84,12 +80,8 @@ const Sections = () => {
           </div>
           <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
             <div className="space-y-4">
-              {leaderboardData.map(user => (
-                <div 
-                  key={user.position} 
-                  className={`flex items-center justify-between p-4 rounded-lg transition-colors
-                    ${user.position === 1 ? 'bg-accent-purple/10' : 'hover:bg-neutral-50'}`}
-                >
+              {leaderboardData.map(user => <div key={user.position} className={`flex items-center justify-between p-4 rounded-lg transition-colors
+                    ${user.position === 1 ? 'bg-accent-purple/10' : 'hover:bg-neutral-50'}`}>
                   <div className="flex items-center gap-4">
                     <div className={`w-10 h-10 rounded-full flex items-center justify-center
                       ${user.position <= 3 ? 'bg-gradient-to-br from-accent-purple/20 to-accent-purple/10' : 'bg-neutral-100'}`}>
@@ -104,8 +96,7 @@ const Sections = () => {
                     <span className="font-bold text-lg">{user.points}</span>
                     <span className="text-sm text-neutral-600">punti</span>
                   </div>
-                </div>
-              ))}
+                </div>)}
             </div>
           </Card>
         </div>
@@ -157,7 +148,7 @@ const Sections = () => {
             <span className="bg-accent-purple/10 text-accent-purple px-4 py-1.5 rounded-full text-sm font-medium">
               PIANI
             </span>
-            <h2 className="heading-lg mt-6 text-white">Scegli il Tuo Piano</h2>
+            <h2 className="heading-lg mt-6 text-slate-50">Scegli il Tuo Piano</h2>
             <p className="text-neutral-400 mt-4 max-w-2xl mx-auto">
               Seleziona il piano più adatto alle tue esigenze
             </p>
@@ -208,5 +199,4 @@ const Sections = () => {
       </section>
     </>;
 };
-
 export default Sections;
