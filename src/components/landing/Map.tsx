@@ -58,20 +58,20 @@ const Map = () => {
       </div>
       
       <MapContainer 
-        center={[45.4642, 9.1900]} 
         zoom={13} 
         style={{ height: "600px", width: "100%", borderRadius: "0.75rem" }}
+        center={[45.4642, 9.1900] as [number, number]}
       >
         <TileLayer
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         
         {chargingStations.map((station, index) => (
           <Marker
             key={`charging-${index}`}
             position={station.position as [number, number]}
-            icon={customIcon('accent-blue', `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10V5H7v12Z"/><path d="M11 8h2v3h-2z"/><path d="M7 5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3"/><path d="M17 5h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-3"/></svg>`)}
+            icon={customIcon('accent-blue', <Plug className="w-4 h-4" />)}
           >
             <Popup>
               <div className="font-medium">{station.name}</div>
@@ -84,7 +84,7 @@ const Map = () => {
           <Marker
             key={`bike-${index}`}
             position={rental.position as [number, number]}
-            icon={customIcon('accent-green', `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>`)}
+            icon={customIcon('accent-green', <Bike className="w-4 h-4" />)}
           >
             <Popup>
               <div className="font-medium">{rental.name}</div>
