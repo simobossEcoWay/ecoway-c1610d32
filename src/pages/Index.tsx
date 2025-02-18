@@ -8,7 +8,7 @@ import Sections from "@/components/landing/Sections";
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-neutral-100">
+    <div className="min-h-screen bg-background text-foreground dark:bg-neutral-900">
       <Navigation />
       <Hero />
       <TrustedBy />
