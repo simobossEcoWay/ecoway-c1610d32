@@ -5,8 +5,8 @@ import { Card } from "@/components/ui/card";
 const Features = () => {
   const features = [
     {
-      title: "Intelligent Task Management",
-      description: "Streamline your tasks and collaborate seamlessly with our cutting-edge SaaS startup platform.",
+      title: "Sostenitore Standard",
+      description: "Sostenibilità senza costi, solo benefici",
       points: ["Smart Task Assignment", "Real-time Collaboration", "Data Security & Privacy"]
     },
     {
