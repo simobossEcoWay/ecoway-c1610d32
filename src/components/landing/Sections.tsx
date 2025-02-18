@@ -1,6 +1,5 @@
-
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, Bike, MapPin, TreeDeciduous } from "lucide-react";
+import { Crown, Trophy, Medal } from "lucide-react";
 
 const Sections = () => {
   const leaderboardData = [
@@ -26,31 +25,6 @@ const Sections = () => {
         return <Medal className="w-5 h-5 text-amber-700" />;
       default:
         return <span className="w-5 h-5 flex items-center justify-center font-medium">{position}</span>;
-    }
-  };
-
-  const milanLocations = [
-    { type: 'charging', name: 'Stazione di Ricarica Centrale', location: 'Via Dante' },
-    { type: 'charging', name: 'Charging Point Duomo', location: 'Piazza del Duomo' },
-    { type: 'charging', name: 'EV Station Navigli', location: 'Naviglio Grande' },
-    { type: 'bike', name: 'BikeMi Centro', location: 'Corso Buenos Aires' },
-    { type: 'bike', name: 'Rental Bikes Porta Nuova', location: 'Piazza Gae Aulenti' },
-    { type: 'bike', name: 'City Bikes Sempione', location: 'Parco Sempione' },
-    { type: 'park', name: 'Parco Sempione', location: 'Centro città' },
-    { type: 'park', name: 'Giardini Pubblici', location: 'Porta Venezia' },
-    { type: 'park', name: 'Parco Biblioteca degli Alberi', location: 'Porta Nuova' }
-  ];
-
-  const getLocationIcon = (type: string) => {
-    switch (type) {
-      case 'charging':
-        return <MapPin className="w-6 h-6 text-blue-500" />; // Changed from ChargingPile to MapPin
-      case 'bike':
-        return <Bike className="w-6 h-6 text-green-500" />;
-      case 'park':
-        return <TreeDeciduous className="w-6 h-6 text-emerald-500" />; // Changed from Tree to TreeDeciduous
-      default:
-        return <MapPin className="w-6 h-6 text-gray-500" />;
     }
   };
 
@@ -103,47 +77,15 @@ const Sections = () => {
             <span className="bg-accent-purple/10 text-accent-purple px-4 py-1.5 rounded-full text-sm font-medium">
               MAPPA
             </span>
-            <h2 className="heading-lg mt-6">Esplora Milano</h2>
+            <h2 className="heading-lg mt-6">Esplora la Tua Città</h2>
             <p className="text-neutral-600 mt-4 max-w-2xl mx-auto">
-              Scopri stazioni di ricarica, noleggio bici e parchi nella tua zona
+              Scopri punti di interesse e percorsi sostenibili nella tua zona
             </p>
           </div>
           <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
-            <div className="space-y-6">
-              <div className="flex items-center justify-center gap-8 mb-8">
-                <div className="flex items-center gap-2">
-                  <MapPin className="w-5 h-5 text-blue-500" />
-                  <span>Stazioni di ricarica</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <Bike className="w-5 h-5 text-green-500" />
-                  <span>Noleggio bici</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <TreeDeciduous className="w-5 h-5 text-emerald-500" />
-                  <span>Parchi</span>
-                </div>
-              </div>
-              <div className="relative w-full aspect-[4/3] bg-neutral-100 rounded-lg overflow-hidden">
-                <div className="absolute inset-0 p-4">
-                  <div className="grid grid-cols-3 gap-4 h-full">
-                    {milanLocations.map((location, index) => (
-                      <div
-                        key={index}
-                        className="relative bg-white/80 backdrop-blur-sm rounded-lg p-4 hover:bg-white transition-colors cursor-pointer"
-                      >
-                        <div className="absolute top-2 right-2">
-                          {getLocationIcon(location.type)}
-                        </div>
-                        <div className="mt-4">
-                          <h3 className="font-medium text-sm">{location.name}</h3>
-                          <p className="text-xs text-neutral-600 mt-1">{location.location}</p>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
+            <div className="text-center">
+              <h3 className="text-2xl font-bold mb-4">Coming Soon</h3>
+              <p className="text-neutral-600">La mappa interattiva sarà disponibile a breve!</p>
             </div>
           </Card>
         </div>
