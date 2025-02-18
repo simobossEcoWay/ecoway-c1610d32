@@ -1,3 +1,4 @@
+
 const TrustedBy = () => {
   const companies = [
     { name: "Stripe", className: "w-24" },
@@ -9,7 +10,7 @@ const TrustedBy = () => {
   return (
     <section className="py-24 bg-neutral-200/50">
       <div className="container-padding">
-        <p className="text-center text-neutral-600 mb-12">Trusted by popular startups you know</p>
+        <p className="text-center text-neutral-600 mb-12">risparmia grazie a EcoWay</p>
         <div className="flex flex-wrap justify-center items-center gap-12">
           {companies.map((company) => (
             <div key={company.name} className={`${company.className} h-8 bg-neutral-400/20 rounded-lg`} />
