@@ -24,63 +24,51 @@ const CityMap = () => {
 
   return (
     <div className="space-y-4">
-      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200">
-        {/* Map Grid Background with stronger visibility */}
+      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-200">
+        {/* Base Map Structure */}
         <div className="absolute inset-0">
-          {/* Vertical Lines */}
-          <div className="absolute inset-0 flex justify-between px-4">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="w-px h-full bg-neutral-200" />
-            ))}
+          {/* Districts Background */}
+          <div className="absolute inset-0 p-4">
+            {/* Central District */}
+            <div className="absolute inset-[20%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* North District */}
+            <div className="absolute top-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* South District */}
+            <div className="absolute bottom-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* East District */}
+            <div className="absolute right-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* West District */}
+            <div className="absolute left-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
           </div>
-          {/* Horizontal Lines */}
-          <div className="absolute inset-0 flex flex-col justify-between py-4">
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="w-full h-px bg-neutral-200" />
-            ))}
-          </div>
-        </div>
 
-        {/* City Areas */}
-        <div className="absolute inset-0 p-8">
-          {/* City Center Indicator */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-4xl font-bold text-neutral-300/50">
-            Milano
-          </div>
-          
-          {/* Main Roads */}
+          {/* Major Roads */}
           <div className="absolute inset-0">
-            {/* Horizontal Main Road */}
-            <div className="absolute top-1/2 left-0 right-0 h-2 bg-neutral-200/70 transform -translate-y-1/2" />
-            {/* Vertical Main Road */}
-            <div className="absolute top-0 bottom-0 left-1/2 w-2 bg-neutral-200/70 transform -translate-x-1/2" />
+            {/* Central Cross */}
+            <div className="absolute left-0 right-0 top-1/2 h-4 bg-neutral-200 -translate-y-1/2" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-4 bg-neutral-200 -translate-x-1/2" />
             
-            {/* Diagonal Roads */}
-            <div className="absolute h-[1px] w-[200%] top-0 left-0 bg-neutral-200 origin-bottom-right rotate-45 transform -translate-x-1/2" />
-            <div className="absolute h-[1px] w-[200%] top-0 right-0 bg-neutral-200 origin-bottom-left -rotate-45 transform translate-x-1/2" />
+            {/* Ring Road */}
+            <div className="absolute inset-[15%] border-8 border-neutral-200 rounded-full" />
           </div>
 
-          {/* Areas Highlights */}
-          <div className="absolute inset-8">
-            {/* Centro */}
-            <div className="absolute top-1/3 left-1/3 right-1/3 bottom-1/3 bg-neutral-200/20 rounded-full" />
-            {/* Navigli */}
-            <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-neutral-200/20 rounded-tr-3xl" />
-            {/* Garibaldi */}
-            <div className="absolute top-0 right-0 w-1/3 h-1/3 bg-neutral-200/20 rounded-bl-3xl" />
+          {/* City Label */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="text-4xl font-bold text-neutral-400 bg-white/80 px-6 py-2 rounded-full shadow-sm">
+              Milano
+            </div>
           </div>
 
-          {/* Markers */}
+          {/* Points of Interest */}
           {locations.chargingStations.map((location, index) => (
             <div
               key={`charging-${index}`}
               className="absolute group"
               style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-purple/20 flex items-center justify-center cursor-pointer shadow-lg">
-                <MapPin className="w-5 h-5 text-accent-purple" />
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-purple flex items-center justify-center cursor-pointer shadow-lg">
+                <MapPin className="w-6 h-6 text-accent-purple" />
               </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
                 {location.name}
               </div>
             </div>
@@ -92,10 +80,10 @@ const CityMap = () => {
               className="absolute group"
               style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-blue/20 flex items-center justify-center cursor-pointer shadow-lg">
-                <Bike className="w-5 h-5 text-accent-blue" />
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center cursor-pointer shadow-lg">
+                <Bike className="w-6 h-6 text-accent-blue" />
               </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
                 {location.name}
               </div>
             </div>
@@ -107,10 +95,10 @@ const CityMap = () => {
               className="absolute group"
               style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-green/20 flex items-center justify-center cursor-pointer shadow-lg">
-                <TreeDeciduous className="w-5 h-5 text-accent-green" />
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-green flex items-center justify-center cursor-pointer shadow-lg">
+                <TreeDeciduous className="w-6 h-6 text-accent-green" />
               </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
                 {location.name}
               </div>
             </div>
@@ -120,19 +108,19 @@ const CityMap = () => {
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-accent-purple/20 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-purple flex items-center justify-center">
             <MapPin className="w-5 h-5 text-accent-purple" />
           </div>
           <span className="text-sm">Stazioni di ricarica</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-accent-blue/20 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center">
             <Bike className="w-5 h-5 text-accent-blue" />
           </div>
           <span className="text-sm">Noleggio bici</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-accent-green/20 flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-green flex items-center justify-center">
             <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
           <span className="text-sm">Parchi</span>
