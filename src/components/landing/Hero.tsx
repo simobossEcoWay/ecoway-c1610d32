@@ -29,10 +29,10 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.4 }}
         >
           <button className="button-primary flex items-center gap-2">
-            Get Started Now
+            Scarica
           </button>
           <button className="px-6 py-3 border border-neutral-300 rounded-lg hover:bg-neutral-200/50 transition-colors">
-            Learn More
+            Chi siamo
           </button>
         </motion.div>
       </div>

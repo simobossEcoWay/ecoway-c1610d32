@@ -23,10 +23,10 @@ const Navigation = () => {
         
         <div className="hidden md:flex items-center gap-4">
           <button className="px-4 py-2 text-primary hover:text-primary/80 transition-colors font-medium">
-            Log in
+            Accedi
           </button>
           <button className="button-secondary">
-            Try for Free
+            Piani
           </button>
         </div>
 
@@ -53,10 +53,10 @@ const Navigation = () => {
             <a href="#about" className="text-neutral-600 hover:text-primary transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg">Ricompense</a>
             <hr className="border-neutral-200" />
             <button className="text-primary hover:text-primary/80 transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">
-              Log in
+              Accedi
             </button>
             <button className="button-secondary w-full">
-              Try for Free
+              Piani
             </button>
           </div>
         </motion.div>
