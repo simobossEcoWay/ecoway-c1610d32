@@ -3,11 +3,36 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 import Index from "./pages/Index";
 import ChiSiamo from "./pages/ChiSiamo";
 
 const queryClient = new QueryClient();
+
+function ScrollManager() {
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    // Check for section parameter in URL
+    const params = new URLSearchParams(location.search);
+    const section = params.get('section');
+    
+    if (section) {
+      // Remove the section parameter from URL
+      navigate('/', { replace: true });
+      
+      // Scroll to the section
+      const element = document.getElementById(section);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  }, [location]);
+
+  return null;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
@@ -15,6 +40,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <ScrollManager />
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />
