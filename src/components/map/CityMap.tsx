@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
-import { MapPin, Bike, Tree } from 'lucide-react';
+import { MapPin, Bike, TreeDeciduous } from 'lucide-react';
 
 const CityMap = () => {
   const mapContainer = useRef<HTMLDivElement>(null);
@@ -60,7 +60,7 @@ const CityMap = () => {
           break;
         case 'park':
           bgColor = 'rgb(126, 191, 142, 0.2)';
-          Icon = Tree;
+          Icon = TreeDeciduous;
           break;
       }
 
@@ -140,7 +140,7 @@ const CityMap = () => {
         </div>
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-accent-green/20 flex items-center justify-center">
-            <Tree className="w-5 h-5 text-accent-green" />
+            <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
           <span className="text-sm">Parchi</span>
         </div>
