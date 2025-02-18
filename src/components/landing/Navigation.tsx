@@ -6,6 +6,14 @@ import { motion } from "framer-motion";
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const scrollToFeatures = () => {
+    const featuresElement = document.querySelector('.text-accent-purple');
+    if (featuresElement) {
+      featuresElement.scrollIntoView({ behavior: 'smooth' });
+      setIsMenuOpen(false); // Close mobile menu if open
+    }
+  };
+
   return (
     <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
@@ -25,7 +33,7 @@ const Navigation = () => {
           <button className="px-4 py-2 text-primary hover:text-primary/80 transition-colors font-medium">
             Accedi
           </button>
-          <button className="button-secondary">
+          <button className="button-secondary" onClick={scrollToFeatures}>
             Piani
           </button>
         </div>
@@ -55,7 +63,7 @@ const Navigation = () => {
             <button className="text-primary hover:text-primary/80 transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">
               Accedi
             </button>
-            <button className="button-secondary w-full">
+            <button className="button-secondary w-full" onClick={scrollToFeatures}>
               Piani
             </button>
           </div>
