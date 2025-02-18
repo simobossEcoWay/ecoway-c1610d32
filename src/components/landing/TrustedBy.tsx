@@ -8,12 +8,12 @@ const TrustedBy = () => {
   ];
 
   return (
-    <section className="py-24 bg-neutral-200/50">
+    <section className="py-24 bg-black/40">
       <div className="container-padding">
-        <p className="text-center text-neutral-600 mb-12">Risparmia grazie a EcoWay</p>
+        <p className="text-center text-neutral-400 mb-12">Risparmia grazie a EcoWay</p>
         <div className="flex flex-wrap justify-center items-center gap-12">
           {companies.map((company) => (
-            <div key={company.name} className={`${company.className} h-8 bg-neutral-400/20 rounded-lg`} />
+            <div key={company.name} className={`${company.className} h-8 bg-neutral-700/20 rounded-lg`} />
           ))}
         </div>
       </div>
