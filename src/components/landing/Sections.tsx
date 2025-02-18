@@ -103,7 +103,7 @@ const Sections = () => {
       </section>
 
       {/* Mappa Section */}
-      <section id="mappa" className="py-24 min-h-screen bg-neutral-50">
+      <section id="mappa" className="py-24 min-h-screen bg-zinc-50">
         <div className="container-padding">
           <div className="text-center mb-16">
             <span className="bg-accent-purple/10 text-accent-purple px-4 py-1.5 rounded-full text-sm font-medium">
