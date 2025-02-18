@@ -1,130 +1,93 @@
 
-import React, { useEffect, useRef, useState } from 'react';
-import mapboxgl from 'mapbox-gl';
-import 'mapbox-gl/dist/mapbox-gl.css';
+import React from 'react';
 import { MapPin, Bike, TreeDeciduous } from 'lucide-react';
 
 const CityMap = () => {
-  const mapContainer = useRef<HTMLDivElement>(null);
-  const map = useRef<mapboxgl.Map | null>(null);
-  const [mapboxToken, setMapboxToken] = useState('');
-
   // Sample data for Milan locations
   const locations = {
     chargingStations: [
-      { name: "Stazione di ricarica Centro", coordinates: [9.1875, 45.4668] },
-      { name: "Stazione di ricarica Navigli", coordinates: [9.1754, 45.4584] },
-      { name: "Stazione di ricarica Garibaldi", coordinates: [9.1878, 45.4838] }
+      { name: "Stazione di ricarica Centro", coordinates: { x: 45, y: 45 } },
+      { name: "Stazione di ricarica Navigli", coordinates: { x: 25, y: 65 } },
+      { name: "Stazione di ricarica Garibaldi", coordinates: { x: 65, y: 25 } }
     ],
     bikeRentals: [
-      { name: "Noleggio Bici Duomo", coordinates: [9.1900, 45.4641] },
-      { name: "Noleggio Bici Centrale", coordinates: [9.1927, 45.4859] },
-      { name: "Noleggio Bici Sempione", coordinates: [9.1747, 45.4764] }
+      { name: "Noleggio Bici Duomo", coordinates: { x: 50, y: 50 } },
+      { name: "Noleggio Bici Centrale", coordinates: { x: 30, y: 30 } },
+      { name: "Noleggio Bici Sempione", coordinates: { x: 70, y: 70 } }
     ],
     parks: [
-      { name: "Parco Sempione", coordinates: [9.1747, 45.4723] },
-      { name: "Giardini Pubblici", coordinates: [9.2000, 45.4723] },
-      { name: "Parco Biblioteca degli Alberi", coordinates: [9.1907, 45.4853] }
+      { name: "Parco Sempione", coordinates: { x: 20, y: 40 } },
+      { name: "Giardini Pubblici", coordinates: { x: 60, y: 35 } },
+      { name: "Parco Biblioteca degli Alberi", coordinates: { x: 80, y: 55 } }
     ]
   };
 
-  useEffect(() => {
-    if (!mapContainer.current) return;
-
-    const addMarker = (type: 'charging' | 'bike' | 'park', location: { name: string, coordinates: number[] }) => {
-      if (!map.current) return;
-
-      const markerElement = document.createElement('div');
-      markerElement.className = 'custom-marker';
-      
-      const style = {
-        padding: '8px',
-        borderRadius: '50%',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer'
-      };
-
-      let bgColor = '';
-      let Icon;
-
-      switch (type) {
-        case 'charging':
-          bgColor = 'rgb(137, 137, 222, 0.2)';
-          Icon = MapPin;
-          break;
-        case 'bike':
-          bgColor = 'rgb(97, 170, 242, 0.2)';
-          Icon = Bike;
-          break;
-        case 'park':
-          bgColor = 'rgb(126, 191, 142, 0.2)';
-          Icon = TreeDeciduous;
-          break;
-      }
-
-      markerElement.style.background = bgColor;
-      
-      // Create React element for the icon
-      const iconElement = document.createElement('div');
-      iconElement.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${Icon({}).props.children}</svg>`;
-      markerElement.appendChild(iconElement);
-
-      // Add popup
-      const popup = new mapboxgl.Popup({ offset: 25 }).setText(location.name);
-
-      new mapboxgl.Marker(markerElement)
-        .setLngLat(location.coordinates as [number, number])
-        .setPopup(popup)
-        .addTo(map.current);
-    };
-
-    // Initialize map
-    map.current = new mapboxgl.Map({
-      container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/light-v11',
-      center: [9.1900, 45.4641], // Milan center coordinates
-      zoom: 13,
-      accessToken: mapboxToken || 'YOUR_MAPBOX_TOKEN_HERE' // Replace with your token
-    });
-
-    // Add navigation controls
-    map.current.addControl(new mapboxgl.NavigationControl(), 'top-right');
-
-    // Add markers when map loads
-    map.current.on('load', () => {
-      locations.chargingStations.forEach(location => addMarker('charging', location));
-      locations.bikeRentals.forEach(location => addMarker('bike', location));
-      locations.parks.forEach(location => addMarker('park', location));
-    });
-
-    return () => {
-      map.current?.remove();
-    };
-  }, [mapboxToken]);
-
   return (
     <div className="space-y-4">
-      <div className="flex flex-col space-y-2">
-        <label htmlFor="mapbox-token" className="text-sm text-neutral-600">
-          Inserisci il tuo token Mapbox pubblico:
-        </label>
-        <input
-          id="mapbox-token"
-          type="text"
-          className="px-4 py-2 rounded-lg border border-neutral-200"
-          placeholder="pk.eyJ1..."
-          value={mapboxToken}
-          onChange={(e) => setMapboxToken(e.target.value)}
-        />
-        <p className="text-xs text-neutral-500">
-          Puoi trovare il tuo token pubblico su mapbox.com nella sezione "Access tokens"
-        </p>
+      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-100 border border-neutral-200">
+        {/* Fake Map Background */}
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTSAwIDEwIEwgNDAgMTAgTSAxMCAwIEwgMTAgNDBNIDAgMjAgTCA0MCAyMCBNIDIwIDAgTCAyMCA0MCBNIDAgMzAgTCA0MCAzMCBNIDMwIDAgTCAzMCA0MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZTVlNWU1IiBvcGFjaXR5PSIwLjIiIHN0cm9rZS13aWR0aD0iMSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjQwIiBoZWlnaHQ9IjQwIiBmaWxsPSJ1cmwoI2dyaWQpIi8+PC9zdmc+')] opacity-50" />
+
+        {/* City Areas */}
+        <div className="absolute inset-0 p-8">
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-2xl font-bold text-neutral-300">
+            Milano
+          </div>
+          
+          {/* Roads */}
+          <div className="absolute inset-0">
+            <div className="absolute top-1/2 left-0 right-0 h-1 bg-neutral-200 transform -translate-y-1/2" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-1 bg-neutral-200 transform -translate-x-1/2" />
+          </div>
+
+          {/* Markers */}
+          {locations.chargingStations.map((location, index) => (
+            <div
+              key={`charging-${index}`}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+            >
+              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-purple/20 flex items-center justify-center cursor-pointer">
+                <MapPin className="w-5 h-5 text-accent-purple" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                {location.name}
+              </div>
+            </div>
+          ))}
+
+          {locations.bikeRentals.map((location, index) => (
+            <div
+              key={`bike-${index}`}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+            >
+              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-blue/20 flex items-center justify-center cursor-pointer">
+                <Bike className="w-5 h-5 text-accent-blue" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                {location.name}
+              </div>
+            </div>
+          ))}
+
+          {locations.parks.map((location, index) => (
+            <div
+              key={`park-${index}`}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+            >
+              <div className="w-8 h-8 -translate-x-1/2 -translate-y-1/2 rounded-full bg-accent-green/20 flex items-center justify-center cursor-pointer">
+                <TreeDeciduous className="w-5 h-5 text-accent-green" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-2 py-1 rounded shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                {location.name}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="w-full h-[600px] relative rounded-xl overflow-hidden">
-        <div ref={mapContainer} className="absolute inset-0" />
-      </div>
+
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
           <div className="w-8 h-8 rounded-full bg-accent-purple/20 flex items-center justify-center">
