@@ -1,4 +1,8 @@
 
+import { useState } from "react";
+import { Menu } from "lucide-react";
+import { motion } from "framer-motion";
+
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
