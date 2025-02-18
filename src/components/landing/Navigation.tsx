@@ -33,7 +33,7 @@ const Navigation = () => {
           <button className="px-4 py-2 text-primary hover:text-primary/80 transition-colors font-medium">
             Accedi
           </button>
-          <button className="button-secondary" onClick={() => scrollToSection('features')}>
+          <button className="button-secondary" onClick={() => scrollToSection('piani')}>
             Piani
           </button>
         </div>
@@ -63,7 +63,7 @@ const Navigation = () => {
             <button className="text-primary hover:text-primary/80 transition-colors font-medium px-4 py-2 hover:bg-neutral-200/50 rounded-lg text-left">
               Accedi
             </button>
-            <button className="button-secondary w-full" onClick={() => scrollToSection('features')}>
+            <button className="button-secondary w-full" onClick={() => scrollToSection('piani')}>
               Piani
             </button>
           </div>
@@ -74,3 +74,4 @@ const Navigation = () => {
 };
 
 export default Navigation;
+
