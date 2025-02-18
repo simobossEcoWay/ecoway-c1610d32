@@ -1,35 +1,46 @@
 
 import React from 'react';
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { Plug, Bike } from 'lucide-react';
+import 'leaflet/dist/leaflet.css';
+import L from 'leaflet';
 
 const Map = () => {
+  // Fix for default markers in React-Leaflet
+  const customIcon = (color: string, icon: JSX.Element) => {
+    const customMarkerElement = document.createElement('div');
+    customMarkerElement.className = `w-8 h-8 bg-${color} rounded-full flex items-center justify-center shadow-lg`;
+    customMarkerElement.style.backgroundColor = color === 'accent-blue' ? '#2563eb' : '#22c55e';
+    customMarkerElement.innerHTML = `<div class="text-white">${icon}</div>`;
+
+    return L.divIcon({
+      html: customMarkerElement.outerHTML,
+      className: 'custom-marker',
+      iconSize: [32, 32],
+      iconAnchor: [16, 16]
+    });
+  };
+
   // Sample data for Milan
   const chargingStations = [
-    { x: 40, y: 45, name: "Milano Centrale EV" },
-    { x: 65, y: 35, name: "Porta Garibaldi Power" },
-    { x: 30, y: 60, name: "Porta Romana Electric" },
-    { x: 75, y: 55, name: "Lambrate Charging" },
-    { x: 45, y: 75, name: "Navigli Power Station" }
+    { position: [45.4858, 9.2044], name: "Milano Centrale EV" },
+    { position: [45.4853, 9.1875], name: "Porta Garibaldi Power" },
+    { position: [45.4515, 9.2099], name: "Porta Romana Electric" },
+    { position: [45.4859, 9.2367], name: "Lambrate Charging" },
+    { position: [45.4488, 9.1745], name: "Navigli Power Station" }
   ];
 
   const bikeRentals = [
-    { x: 50, y: 50, name: "Duomo Bikes" },
-    { x: 35, y: 40, name: "Brera Rental" },
-    { x: 70, y: 45, name: "Isola Cycles" },
-    { x: 55, y: 65, name: "Navigli Bikes" },
-    { x: 25, y: 55, name: "Porta Venezia Rental" }
+    { position: [45.4641, 9.1900], name: "Duomo Bikes" },
+    { position: [45.4715, 9.1862], name: "Brera Rental" },
+    { position: [45.4839, 9.1873], name: "Isola Cycles" },
+    { position: [45.4500, 9.1800], name: "Navigli Bikes" },
+    { position: [45.4750, 9.2000], name: "Porta Venezia Rental" }
   ];
-
-  const handleMarkerHover = (event: React.MouseEvent<HTMLDivElement>, name: string) => {
-    const tooltip = event.currentTarget.querySelector('.tooltip');
-    if (tooltip) {
-      tooltip.classList.toggle('opacity-0');
-    }
-  };
 
   return (
     <div className="relative">
-      <div className="absolute top-4 left-4 z-10 bg-white p-4 rounded-lg shadow-lg">
+      <div className="absolute top-4 left-4 z-[1000] bg-white p-4 rounded-lg shadow-lg">
         <div className="flex flex-col gap-4">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-accent-blue rounded-full flex items-center justify-center">
@@ -45,66 +56,43 @@ const Map = () => {
           </div>
         </div>
       </div>
-      <div className="relative w-full h-[600px] bg-neutral-100 rounded-xl overflow-hidden shadow-lg">
-        {/* Grid lines for visual reference */}
-        <div className="absolute inset-0 grid grid-cols-20 grid-rows-20">
-          {Array.from({ length: 400 }).map((_, i) => (
-            <div key={i} className="border border-neutral-200" />
-          ))}
-        </div>
-
-        {/* Main districts */}
-        <div className="absolute inset-10 bg-white/50 rounded-lg shadow-inner" />
-        <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 bg-accent-purple/10 rounded-full flex items-center justify-center">
-          <span className="text-sm font-medium">Duomo</span>
-        </div>
-
-        {/* Charging stations */}
+      
+      <MapContainer 
+        center={[45.4642, 9.1900]} 
+        zoom={13} 
+        style={{ height: "600px", width: "100%", borderRadius: "0.75rem" }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        
         {chargingStations.map((station, index) => (
-          <div
+          <Marker
             key={`charging-${index}`}
-            className="absolute"
-            style={{ left: `${station.x}%`, top: `${station.y}%` }}
-            onMouseEnter={(e) => handleMarkerHover(e, station.name)}
-            onMouseLeave={(e) => handleMarkerHover(e, station.name)}
+            position={station.position as [number, number]}
+            icon={customIcon('accent-blue', `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17h10V5H7v12Z"/><path d="M11 8h2v3h-2z"/><path d="M7 5H4a1 1 0 0 0-1 1v11a1 1 0 0 0 1 1h3"/><path d="M17 5h3a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-3"/></svg>`)}
           >
-            <div className="w-8 h-8 bg-accent-blue rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2">
-              <Plug className="w-4 h-4 text-white" />
-            </div>
-            <div className="tooltip opacity-0 transition-opacity absolute left-1/2 -translate-x-1/2 bottom-full mb-2 bg-white px-2 py-1 rounded shadow-lg text-sm whitespace-nowrap">
-              {station.name}
-            </div>
-          </div>
+            <Popup>
+              <div className="font-medium">{station.name}</div>
+              <div className="text-sm text-neutral-600">Stazione di ricarica</div>
+            </Popup>
+          </Marker>
         ))}
 
-        {/* Bike rentals */}
         {bikeRentals.map((rental, index) => (
-          <div
+          <Marker
             key={`bike-${index}`}
-            className="absolute"
-            style={{ left: `${rental.x}%`, top: `${rental.y}%` }}
-            onMouseEnter={(e) => handleMarkerHover(e, rental.name)}
-            onMouseLeave={(e) => handleMarkerHover(e, rental.name)}
+            position={rental.position as [number, number]}
+            icon={customIcon('accent-green', `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="18.5" cy="17.5" r="3.5"/><circle cx="5.5" cy="17.5" r="3.5"/><circle cx="15" cy="5" r="1"/><path d="M12 17.5V14l-3-3 4-3 2 3h2"/></svg>`)}
           >
-            <div className="w-8 h-8 bg-accent-green rounded-full flex items-center justify-center shadow-lg -translate-x-1/2 -translate-y-1/2">
-              <Bike className="w-4 h-4 text-white" />
-            </div>
-            <div className="tooltip opacity-0 transition-opacity absolute left-1/2 -translate-x-1/2 bottom-full mb-2 bg-white px-2 py-1 rounded shadow-lg text-sm whitespace-nowrap">
-              {rental.name}
-            </div>
-          </div>
+            <Popup>
+              <div className="font-medium">{rental.name}</div>
+              <div className="text-sm text-neutral-600">Noleggio biciclette</div>
+            </Popup>
+          </Marker>
         ))}
-
-        {/* Major roads */}
-        <div className="absolute inset-0">
-          <div className="absolute left-1/2 top-0 bottom-0 w-1 bg-neutral-200 transform -translate-x-1/2" />
-          <div className="absolute top-1/2 left-0 right-0 h-1 bg-neutral-200 transform -translate-y-1/2" />
-          <div className="absolute left-1/4 top-0 bottom-0 w-px bg-neutral-200" />
-          <div className="absolute left-3/4 top-0 bottom-0 w-px bg-neutral-200" />
-          <div className="absolute top-1/4 left-0 right-0 h-px bg-neutral-200" />
-          <div className="absolute top-3/4 left-0 right-0 h-px bg-neutral-200" />
-        </div>
-      </div>
+      </MapContainer>
     </div>
   );
 };
