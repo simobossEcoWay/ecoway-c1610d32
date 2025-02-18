@@ -24,106 +24,79 @@ const CityMap = () => {
 
   return (
     <div className="space-y-4">
-      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-200">
-        {/* Base Map Structure */}
-        <div className="absolute inset-0">
-          {/* Districts Background */}
-          <div className="absolute inset-0 p-4">
-            {/* Central District */}
-            <div className="absolute inset-[20%] bg-neutral-100 rounded-lg border border-neutral-200" />
-            {/* North District */}
-            <div className="absolute top-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
-            {/* South District */}
-            <div className="absolute bottom-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
-            {/* East District */}
-            <div className="absolute right-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
-            {/* West District */}
-            <div className="absolute left-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
-          </div>
-
-          {/* Major Roads */}
-          <div className="absolute inset-0">
-            {/* Central Cross */}
-            <div className="absolute left-0 right-0 top-1/2 h-4 bg-neutral-200 -translate-y-1/2" />
-            <div className="absolute top-0 bottom-0 left-1/2 w-4 bg-neutral-200 -translate-x-1/2" />
-            
-            {/* Ring Road */}
-            <div className="absolute inset-[15%] border-8 border-neutral-200 rounded-full" />
-          </div>
-
-          {/* City Label */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-            <div className="text-4xl font-bold text-neutral-400 bg-white/80 px-6 py-2 rounded-full shadow-sm">
-              Milano
+      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-900">
+        {/* Background Image */}
+        <img
+          src="/lovable-uploads/6dc9aa9b-4a53-4263-8e48-29a6901852c7.png"
+          alt="Mappa di Milano"
+          className="w-full h-full object-cover opacity-80"
+        />
+        
+        {/* Points of Interest */}
+        {locations.chargingStations.map((location, index) => (
+          <div
+            key={`charging-${index}`}
+            className="absolute group"
+            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+          >
+            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-[#ea384c] flex items-center justify-center cursor-pointer">
+              <MapPin className="w-6 h-6 text-[#ea384c]" />
+            </div>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+              {location.name}
             </div>
           </div>
+        ))}
 
-          {/* Points of Interest */}
-          {locations.chargingStations.map((location, index) => (
-            <div
-              key={`charging-${index}`}
-              className="absolute group"
-              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
-            >
-              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center cursor-pointer shadow-lg">
-                <MapPin className="w-6 h-6 text-[#ea384c]" />
-              </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
-                {location.name}
-              </div>
+        {locations.bikeRentals.map((location, index) => (
+          <div
+            key={`bike-${index}`}
+            className="absolute group"
+            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+          >
+            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-accent-blue flex items-center justify-center cursor-pointer">
+              <Bike className="w-6 h-6 text-accent-blue" />
             </div>
-          ))}
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+              {location.name}
+            </div>
+          </div>
+        ))}
 
-          {locations.bikeRentals.map((location, index) => (
-            <div
-              key={`bike-${index}`}
-              className="absolute group"
-              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
-            >
-              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center cursor-pointer shadow-lg">
-                <Bike className="w-6 h-6 text-accent-blue" />
-              </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
-                {location.name}
-              </div>
+        {locations.parks.map((location, index) => (
+          <div
+            key={`park-${index}`}
+            className="absolute group"
+            style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
+          >
+            <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-black/40 border border-accent-green flex items-center justify-center cursor-pointer">
+              <TreeDeciduous className="w-6 h-6 text-accent-green" />
             </div>
-          ))}
-
-          {locations.parks.map((location, index) => (
-            <div
-              key={`park-${index}`}
-              className="absolute group"
-              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
-            >
-              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-green flex items-center justify-center cursor-pointer shadow-lg">
-                <TreeDeciduous className="w-6 h-6 text-accent-green" />
-              </div>
-              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
-                {location.name}
-              </div>
+            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-black/80 text-white px-3 py-1.5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity">
+              {location.name}
             </div>
-          ))}
-        </div>
+          </div>
+        ))}
       </div>
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border border-[#ea384c] flex items-center justify-center">
             <MapPin className="w-5 h-5 text-[#ea384c]" />
           </div>
-          <span className="text-sm">Stazioni di ricarica</span>
+          <span className="text-sm text-neutral-300">Stazioni di ricarica</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border border-accent-blue flex items-center justify-center">
             <Bike className="w-5 h-5 text-accent-blue" />
           </div>
-          <span className="text-sm">Noleggio bici</span>
+          <span className="text-sm text-neutral-300">Noleggio bici</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-green flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-black/40 border border-accent-green flex items-center justify-center">
             <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
-          <span className="text-sm">Parchi</span>
+          <span className="text-sm text-neutral-300">Parchi</span>
         </div>
       </div>
     </div>
