@@ -5,17 +5,24 @@ import { Plug, Bike } from 'lucide-react';
 import 'leaflet/dist/leaflet.css';
 import L from 'leaflet';
 
-const Map = () => {
-  // Fix for default markers in React-Leaflet
-  const customIcon = (color: string, icon: JSX.Element) => {
-    const customMarkerElement = document.createElement('div');
-    customMarkerElement.className = `w-8 h-8 bg-${color} rounded-full flex items-center justify-center shadow-lg`;
-    customMarkerElement.style.backgroundColor = color === 'accent-blue' ? '#2563eb' : '#22c55e';
-    customMarkerElement.innerHTML = `<div class="text-white">${icon}</div>`;
+// Default icon path issue fix
+import icon from 'leaflet/dist/images/marker-icon.png';
+import iconShadow from 'leaflet/dist/images/marker-shadow.png';
 
+let DefaultIcon = L.icon({
+  iconUrl: icon,
+  shadowUrl: iconShadow,
+  iconSize: [25, 41],
+  iconAnchor: [12, 41]
+});
+
+L.Marker.prototype.options.icon = DefaultIcon;
+
+const Map = () => {
+  const createCustomIcon = (color: string) => {
     return L.divIcon({
-      html: customMarkerElement.outerHTML,
       className: 'custom-marker',
+      html: `<div class="w-8 h-8 rounded-full flex items-center justify-center shadow-lg" style="background-color: ${color === 'accent-blue' ? '#2563eb' : '#22c55e'}"></div>`,
       iconSize: [32, 32],
       iconAnchor: [16, 16]
     });
@@ -38,6 +45,12 @@ const Map = () => {
     { position: [45.4750, 9.2000], name: "Porta Venezia Rental" }
   ];
 
+  const defaultProps = {
+    center: [45.4642, 9.1900] as L.LatLngExpression,
+    zoom: 13,
+    scrollWheelZoom: false
+  };
+
   return (
     <div className="relative">
       <div className="absolute top-4 left-4 z-[1000] bg-white p-4 rounded-lg shadow-lg">
@@ -58,20 +71,18 @@ const Map = () => {
       </div>
       
       <MapContainer 
-        zoom={13} 
+        {...defaultProps}
         style={{ height: "600px", width: "100%", borderRadius: "0.75rem" }}
-        center={[45.4642, 9.1900] as [number, number]}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         />
         
         {chargingStations.map((station, index) => (
           <Marker
             key={`charging-${index}`}
-            position={station.position as [number, number]}
-            icon={customIcon('accent-blue', <Plug className="w-4 h-4" />)}
+            position={station.position as L.LatLngExpression}
+            icon={createCustomIcon('accent-blue')}
           >
             <Popup>
               <div className="font-medium">{station.name}</div>
@@ -83,8 +94,8 @@ const Map = () => {
         {bikeRentals.map((rental, index) => (
           <Marker
             key={`bike-${index}`}
-            position={rental.position as [number, number]}
-            icon={customIcon('accent-green', <Bike className="w-4 h-4" />)}
+            position={rental.position as L.LatLngExpression}
+            icon={createCustomIcon('accent-green')}
           >
             <Popup>
               <div className="font-medium">{rental.name}</div>
