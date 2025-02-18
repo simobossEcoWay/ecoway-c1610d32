@@ -25,7 +25,7 @@ const Features = () => {
           </span>
           <h2 className="heading-lg mt-6">Scegli il tuo piano</h2>
           <p className="text-neutral-600 mt-4 max-w-2xl mx-auto">
-            Unlock your team's true potential with our state-of-the-art SaaS platform.
+            Scegli al meglio per il tuo pianeta
           </p>
         </div>
 
