@@ -1,108 +1,129 @@
 
 import React from 'react';
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import { MapPin, Bike, TreeDeciduous } from 'lucide-react';
-import { Icon } from 'leaflet';
-import 'leaflet/dist/leaflet.css';
 
 const CityMap = () => {
   // Sample data for Milan locations
   const locations = {
     chargingStations: [
-      { name: "Stazione di ricarica Centro", coordinates: [45.4642, 9.1900] },
-      { name: "Stazione di ricarica Navigli", coordinates: [45.4545, 9.1745] },
-      { name: "Stazione di ricarica Garibaldi", coordinates: [45.4817, 9.1875] }
+      { name: "Stazione di ricarica Centro", coordinates: { x: 45, y: 45 } },
+      { name: "Stazione di ricarica Navigli", coordinates: { x: 25, y: 65 } },
+      { name: "Stazione di ricarica Garibaldi", coordinates: { x: 65, y: 25 } }
     ],
     bikeRentals: [
-      { name: "Noleggio Bici Duomo", coordinates: [45.4641, 9.1919] },
-      { name: "Noleggio Bici Centrale", coordinates: [45.4859, 9.2042] },
-      { name: "Noleggio Bici Sempione", coordinates: [45.4725, 9.1750] }
+      { name: "Noleggio Bici Duomo", coordinates: { x: 50, y: 50 } },
+      { name: "Noleggio Bici Centrale", coordinates: { x: 30, y: 30 } },
+      { name: "Noleggio Bici Sempione", coordinates: { x: 70, y: 70 } }
     ],
     parks: [
-      { name: "Parco Sempione", coordinates: [45.4724, 9.1788] },
-      { name: "Giardini Pubblici", coordinates: [45.4723, 9.1967] },
-      { name: "Parco Biblioteca degli Alberi", coordinates: [45.4837, 9.1907] }
+      { name: "Parco Sempione", coordinates: { x: 20, y: 40 } },
+      { name: "Giardini Pubblici", coordinates: { x: 60, y: 35 } },
+      { name: "Parco Biblioteca degli Alberi", coordinates: { x: 80, y: 55 } }
     ]
   };
 
-  // Create custom marker icons
-  const createCustomIcon = (color: string) => {
-    return new Icon({
-      iconUrl: `data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23${color.replace('#', '')}' width='24' height='24'%3E%3Cpath d='M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z'/%3E%3C/svg%3E`,
-      iconSize: [32, 32],
-      iconAnchor: [16, 32],
-      popupAnchor: [0, -32],
-    });
-  };
-
-  const chargingIcon = createCustomIcon('#ea384c');
-  const bikeIcon = createCustomIcon('#2563eb');
-  const parkIcon = createCustomIcon('#5a8f67');
-
   return (
     <div className="space-y-4">
-      <div className="w-full h-[600px] relative rounded-xl overflow-hidden">
-        <MapContainer
-          center={[45.4642, 9.1900] as [number, number]}
-          zoom={14}
-          className="w-full h-full"
-          scrollWheelZoom={false}
-        >
-          <TileLayer
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-          />
-          
+      <div className="w-full h-[600px] relative rounded-xl overflow-hidden bg-neutral-50 border-2 border-neutral-200">
+        {/* Base Map Structure */}
+        <div className="absolute inset-0">
+          {/* Districts Background */}
+          <div className="absolute inset-0 p-4">
+            {/* Central District */}
+            <div className="absolute inset-[20%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* North District */}
+            <div className="absolute top-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* South District */}
+            <div className="absolute bottom-4 inset-x-[15%] h-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* East District */}
+            <div className="absolute right-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+            {/* West District */}
+            <div className="absolute left-4 inset-y-[15%] w-[15%] bg-neutral-100 rounded-lg border border-neutral-200" />
+          </div>
+
+          {/* Major Roads */}
+          <div className="absolute inset-0">
+            {/* Central Cross */}
+            <div className="absolute left-0 right-0 top-1/2 h-4 bg-neutral-200 -translate-y-1/2" />
+            <div className="absolute top-0 bottom-0 left-1/2 w-4 bg-neutral-200 -translate-x-1/2" />
+            
+            {/* Ring Road */}
+            <div className="absolute inset-[15%] border-8 border-neutral-200 rounded-full" />
+          </div>
+
+          {/* City Label */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <div className="text-4xl font-bold text-neutral-400 bg-white/80 px-6 py-2 rounded-full shadow-sm">
+              Milano
+            </div>
+          </div>
+
+          {/* Points of Interest */}
           {locations.chargingStations.map((location, index) => (
-            <Marker
+            <div
               key={`charging-${index}`}
-              position={location.coordinates as [number, number]}
-              icon={chargingIcon as any}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <Popup>{location.name}</Popup>
-            </Marker>
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center cursor-pointer shadow-lg">
+                <MapPin className="w-6 h-6 text-[#ea384c]" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
+                {location.name}
+              </div>
+            </div>
           ))}
 
           {locations.bikeRentals.map((location, index) => (
-            <Marker
+            <div
               key={`bike-${index}`}
-              position={location.coordinates as [number, number]}
-              icon={bikeIcon as any}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <Popup>{location.name}</Popup>
-            </Marker>
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center cursor-pointer shadow-lg">
+                <Bike className="w-6 h-6 text-accent-blue" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
+                {location.name}
+              </div>
+            </div>
           ))}
 
           {locations.parks.map((location, index) => (
-            <Marker
+            <div
               key={`park-${index}`}
-              position={location.coordinates as [number, number]}
-              icon={parkIcon as any}
+              className="absolute group"
+              style={{ left: `${location.coordinates.x}%`, top: `${location.coordinates.y}%` }}
             >
-              <Popup>{location.name}</Popup>
-            </Marker>
+              <div className="w-10 h-10 -translate-x-1/2 -translate-y-1/2 rounded-full bg-white border-2 border-accent-green flex items-center justify-center cursor-pointer shadow-lg">
+                <TreeDeciduous className="w-6 h-6 text-accent-green" />
+              </div>
+              <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 whitespace-nowrap bg-white px-3 py-1.5 rounded-full shadow-lg opacity-0 group-hover:opacity-100 transition-opacity border border-neutral-200">
+                {location.name}
+              </div>
+            </div>
           ))}
-        </MapContainer>
+        </div>
       </div>
 
       <div className="flex justify-center gap-6 pt-4">
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-[#ea384c] flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-[#ea384c] flex items-center justify-center">
             <MapPin className="w-5 h-5 text-[#ea384c]" />
           </div>
-          <span className="text-sm text-white">Stazioni di ricarica</span>
+          <span className="text-sm">Stazioni di ricarica</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-accent-blue flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-blue flex items-center justify-center">
             <Bike className="w-5 h-5 text-accent-blue" />
           </div>
-          <span className="text-sm text-white">Noleggio bici</span>
+          <span className="text-sm">Noleggio bici</span>
         </div>
         <div className="flex items-center gap-2">
-          <div className="w-8 h-8 rounded-full bg-black/40 border-2 border-accent-green flex items-center justify-center">
+          <div className="w-8 h-8 rounded-full bg-white border-2 border-accent-green flex items-center justify-center">
             <TreeDeciduous className="w-5 h-5 text-accent-green" />
           </div>
-          <span className="text-sm text-white">Parchi</span>
+          <span className="text-sm">Parchi</span>
         </div>
       </div>
     </div>
