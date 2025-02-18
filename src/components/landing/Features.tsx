@@ -10,8 +10,8 @@ const Features = () => {
       points: ["Mappe", "Sfide", "Sconti"]
     },
     {
-      title: "Advanced Analytics",
-      description: "Harness the power of AI-driven analytics to optimize your campaigns and understand your audience better.",
+      title: "PLUS",
+      description: "Ottimizza la tua esperienza",
       points: ["Smart Audience Segmentation", "Predictive Performance", "Real-time Visualization"]
     }
   ];
