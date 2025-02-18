@@ -25,7 +25,7 @@ const ChiSiamo = () => {
               </p>
             </div>
             <div className="glass-panel p-6 rounded-2xl">
-              <img src="/placeholder.svg" alt="La nostra missione" className="w-full h-auto rounded-lg" />
+              <img alt="La nostra missione" className="w-full h-auto rounded-lg" src="/lovable-uploads/41a31c34-ce3f-413a-b88d-ef7a956cd7f0.jpg" />
             </div>
           </div>
 
@@ -48,7 +48,7 @@ const ChiSiamo = () => {
               </ul>
             </div>
             <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center px-[12px]">
-              <img src="/lovable-uploads/8171377e-e3b3-49b9-bf17-ded32afcdc3e.png" alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-fill" />
+              <img alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-fill" src="/lovable-uploads/e0d9a131-a1fc-4f33-bc9f-f37b5a5a1158.jpg" />
             </div>
           </div>
         </div>
