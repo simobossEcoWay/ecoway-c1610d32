@@ -1,6 +1,6 @@
 
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, Leaf, Trees, PalmTree, Car, Home, Sprout, Coffee } from "lucide-react";
+import { Crown, Trophy, Medal, Leaf, Trees, Palmtree, Car, Home, Sprout, Coffee } from "lucide-react";
 
 const Leaderboard = () => {
   const leaderboardData = [{
@@ -66,7 +66,7 @@ const Leaderboard = () => {
       case 4:
         return <Trees className="w-5 h-5 text-neutral-600" />;
       case 5:
-        return <PalmTree className="w-5 h-5 text-neutral-600" />;
+        return <Palmtree className="w-5 h-5 text-neutral-600" />;
       case 6:
         return <Leaf className="w-5 h-5 text-neutral-600" />;
       case 7:
