@@ -15,20 +15,23 @@
   <script src="https://cdn.gpteng.co/gptengineer.js" type="module"></script>
   <script type="module" src="/src/main.tsx"></script>
 </body>
-
-</html>/
-<script>
+  <script>
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll("*").forEach(el => {
         let style = window.getComputedStyle(el);
-
-        if (style.color === "rgb(0, 128, 0)") {
+        
+        // Cambia testo verde
+        if (style.color.includes("rgb(0, 128, 0)") || style.color.includes("#008000")) {
             el.style.color = "#00AEEF";
         }
-        if (style.backgroundColor === "rgb(0, 128, 0)") {
+
+        // Cambia sfondo verde
+        if (style.backgroundColor.includes("rgb(0, 128, 0)") || style.backgroundColor.includes("#008000")) {
             el.style.backgroundColor = "#00AEEF";
         }
-        if (style.borderColor === "rgb(0, 128, 0)") {
+
+        // Cambia bordo verde
+        if (style.borderColor.includes("rgb(0, 128, 0)") || style.borderColor.includes("#008000")) {
             el.style.borderColor = "#00AEEF";
         }
     });
