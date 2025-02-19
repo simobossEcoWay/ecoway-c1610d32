@@ -1,5 +1,6 @@
+
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, User, Battery, Car, Bike } from "lucide-react";
+import { Crown, Trophy, Medal, User, Battery, Car, Bike, Percent, Gift, Tag } from "lucide-react";
 import CityMap from "@/components/map/CityMap";
 
 const Sections = () => {
@@ -135,48 +136,101 @@ const Sections = () => {
               Ottieni premi e sconti per il tuo impegno nella sostenibilità
             </p>
           </div>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Battery className="w-6 h-6 text-accent-purple" />
-                </div>
-                <h3 className="text-xl font-bold">Ricarica Completa</h3>
-                <p className="text-neutral-600">Ricarica la batteria della tua macchina fino al 100%</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+50</div>
-                  <div className="text-sm text-neutral-600">punti</div>
-                </div>
-              </div>
-            </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Car className="w-6 h-6 text-accent-purple" />
+          {/* Challenges Section */}
+          <div className="mb-16">
+            <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Battery className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Ricarica Completa</h3>
+                  <p className="text-neutral-600">Ricarica la batteria della tua macchina fino al 100%</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+50</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold">Guida Efficiente</h3>
-                <p className="text-neutral-600">Mantieni un consumo medio sotto i 15 kWh/100km per una settimana</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+100</div>
-                  <div className="text-sm text-neutral-600">punti</div>
-                </div>
-              </div>
-            </Card>
+              </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Bike className="w-6 h-6 text-accent-purple" />
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Car className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Guida Efficiente</h3>
+                  <p className="text-neutral-600">Mantieni un consumo medio sotto i 15 kWh/100km per una settimana</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+100</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold">Mobilità Alternativa</h3>
-                <p className="text-neutral-600">Usa la bici o i mezzi pubblici per 5 giorni consecutivi</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+75</div>
-                  <div className="text-sm text-neutral-600">punti</div>
+              </Card>
+
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Bike className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Mobilità Alternativa</h3>
+                  <p className="text-neutral-600">Usa la bici o i mezzi pubblici per 5 giorni consecutivi</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+75</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            </div>
+          </div>
+
+          {/* Store Discounts Section */}
+          <div>
+            <h3 className="text-2xl font-bold text-center mb-8">Sconti nei Negozi</h3>
+            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Tag className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Sconto Colombo</h3>
+                  <p className="text-neutral-600">10% di sconto su tutti i prodotti da Colombo</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">500</div>
+                    <div className="text-sm text-neutral-600">punti necessari</div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Percent className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Sconto Lanzarotti</h3>
+                  <p className="text-neutral-600">20% di sconto da Lanzarotti</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">750</div>
+                    <div className="text-sm text-neutral-600">punti necessari</div>
+                  </div>
+                </div>
+              </Card>
+
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Gift className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Buono Regalo</h3>
+                  <p className="text-neutral-600">Buono regalo da 50€ per il tuo negozio preferito</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">1000</div>
+                    <div className="text-sm text-neutral-600">punti necessari</div>
+                  </div>
+                </div>
+              </Card>
+            </div>
           </div>
         </div>
       </section>
