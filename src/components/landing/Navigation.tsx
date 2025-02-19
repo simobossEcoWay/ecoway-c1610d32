@@ -41,10 +41,10 @@ const Navigation = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-4">
-          <Link to="/chi-siamo" className={navLinkClass}>Chi siamo</Link>
           <button onClick={() => handleNavigation('classifica')} className={navLinkClass}>Classifica</button>
           <button onClick={() => handleNavigation('mappa')} className={navLinkClass}>Mappa</button>
           <button onClick={() => handleNavigation('ricompense')} className={navLinkClass}>Ricompense</button>
+          <Link to="/chi-siamo" className={navLinkClass}>Chi siamo</Link>
         </div>
         
         <div className="hidden md:flex items-center gap-4">
@@ -73,10 +73,10 @@ const Navigation = () => {
       duration: 0.2
     }}>
           <div className="flex flex-col gap-4">
-            <Link to="/chi-siamo" className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all hover:scale-105">Chi siamo</Link>
             <button onClick={() => handleNavigation('classifica')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Classifica</button>
             <button onClick={() => handleNavigation('mappa')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Mappa</button>
             <button onClick={() => handleNavigation('ricompense')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Ricompense</button>
+            <Link to="/chi-siamo" className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all hover:scale-105">Chi siamo</Link>
             <hr className="border-white/10" />
             <Link to="/accedi" className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
               Accedi
