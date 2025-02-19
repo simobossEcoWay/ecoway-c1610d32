@@ -1,7 +1,10 @@
+
 import Navigation from "@/components/landing/Navigation";
 import Footer from "@/components/landing/Footer";
+
 const ChiSiamo = () => {
-  return <div className="min-h-screen bg-[#121212]">
+  return (
+    <div className="min-h-screen bg-[#121212]">
       <Navigation />
       <section className="pt-32 pb-24">
         <div className="container-padding">
@@ -11,49 +14,86 @@ const ChiSiamo = () => {
             </span>
             <h1 className="heading-lg mt-6">Chi Siamo</h1>
             <p className="text-neutral-400 mt-4 max-w-2xl mx-auto">
-              Scopri la squadra dietro EcoWay e la nostra missione per un futuro più sostenibile
+              Un viaggio attraverso la nostra storia e la nostra missione
             </p>
           </div>
 
+          {/* First Paragraph Section */}
           <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div className="space-y-6">
-              <h2 className="text-2xl font-bold text-white">La Nostra Missione</h2>
+              <h2 className="text-2xl font-bold text-white">
+                [Titolo Paragrafo 1]
+              </h2>
               <p className="text-neutral-400">
-                In EcoWay, crediamo che ogni piccolo gesto conti nel creare un futuro più sostenibile.
-                La nostra missione è rendere la sostenibilità accessibile e gratificante per tutti,
-                trasformando le azioni quotidiane in impatti positivi per il nostro pianeta.
+                [Il testo del primo paragrafo andrà qui]
               </p>
             </div>
             <div className="glass-panel p-6 rounded-2xl">
-              <img alt="La nostra missione" className="w-full h-auto rounded-lg" src="/lovable-uploads/fbb5dc2e-c16a-4a3f-a8e9-0a9637ba0de0.jpg" />
+              {/* Placeholder for first image */}
+              <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
+                Immagine 1
+              </div>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-12 items-center mb-24 md:flex-row-reverse">
-            <div className="space-y-6 order-2 md:order-1">
-              <h2 className="text-2xl font-bold text-white">I Nostri Valori</h2>
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <span className="font-semibold min-w-32 text-white">Sostenibilità</span>
-                  <p className="text-neutral-400">Promuoviamo scelte eco-sostenibili in ogni aspetto della vita quotidiana.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-semibold min-w-32 text-white">Innovazione</span>
-                  <p className="text-neutral-400">Utilizziamo la tecnologia per rendere la sostenibilità accessibile a tutti.</p>
-                </li>
-                <li className="flex items-start gap-3">
-                  <span className="font-semibold min-w-32 text-white">Comunità</span>
-                  <p className="text-neutral-400">Creiamo una rete di persone impegnate per un futuro migliore.</p>
-                </li>
-              </ul>
+          {/* Second Paragraph Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
+            <div className="glass-panel p-6 rounded-2xl order-2 md:order-1">
+              {/* Placeholder for second image */}
+              <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
+                Immagine 2
+              </div>
             </div>
-            <div className="glass-panel p-6 rounded-2xl order-1 md:order-2 flex items-center justify-center">
-              <img alt="I nostri valori - Logo EcoWay" className="w-48 h-48 object-contain" src="/lovable-uploads/6dc9aa9b-4a53-4263-8e48-29a6901852c7.png" />
+            <div className="space-y-6 order-1 md:order-2">
+              <h2 className="text-2xl font-bold text-white">
+                [Titolo Paragrafo 2]
+              </h2>
+              <p className="text-neutral-400">
+                [Il testo del secondo paragrafo andrà qui]
+              </p>
+            </div>
+          </div>
+
+          {/* Third Paragraph Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-white">
+                [Titolo Paragrafo 3]
+              </h2>
+              <p className="text-neutral-400">
+                [Il testo del terzo paragrafo andrà qui]
+              </p>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl">
+              {/* Placeholder for third image */}
+              <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
+                Immagine 3
+              </div>
+            </div>
+          </div>
+
+          {/* Fourth Paragraph Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="glass-panel p-6 rounded-2xl order-2 md:order-1">
+              {/* Placeholder for fourth image */}
+              <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
+                Immagine 4
+              </div>
+            </div>
+            <div className="space-y-6 order-1 md:order-2">
+              <h2 className="text-2xl font-bold text-white">
+                [Titolo Paragrafo 4]
+              </h2>
+              <p className="text-neutral-400">
+                [Il testo del quarto paragrafo andrà qui]
+              </p>
             </div>
           </div>
         </div>
       </section>
       <Footer />
-    </div>;
+    </div>
+  );
 };
+
 export default ChiSiamo;
