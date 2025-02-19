@@ -51,7 +51,7 @@ const Navigation = () => {
               onClick={() => setIsRewardsOpen(!isRewardsOpen)} 
               className={`${navLinkClass} flex items-center gap-1`}
             >
-              Ricompense
+              Missioni
               <ChevronDown className="w-4 h-4" />
             </button>
             {isRewardsOpen && (
