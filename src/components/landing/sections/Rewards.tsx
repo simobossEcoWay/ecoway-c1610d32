@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Battery, Car, Bike, Percent, Gift, Tag } from "lucide-react";
+import { Battery, Car, Bike, Park, Footprints, Calendar } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
 
 const Rewards = () => {
@@ -72,6 +72,63 @@ const Rewards = () => {
                   <div className="flex justify-between mt-2">
                     <span className="text-sm text-neutral-600">30% completato</span>
                     <span className="text-sm font-bold text-accent-purple">+75 punti</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Calendar className="w-6 h-6 text-accent-purple" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold mb-1">Mobilità Elettrica</h3>
+                  <p className="text-neutral-600 mb-4">Guida una macchina elettrica per 15 giorni di fila</p>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '20%' }}></div>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="text-sm text-neutral-600">20% completato</span>
+                    <span className="text-sm font-bold text-accent-purple">+150 punti</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Park className="w-6 h-6 text-accent-purple" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold mb-1">Amante dei Parchi</h3>
+                  <p className="text-neutral-600 mb-4">Frequenta un parco 10 volte in un mese</p>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '40%' }}></div>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="text-sm text-neutral-600">40% completato</span>
+                    <span className="text-sm font-bold text-accent-purple">+80 punti</span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
+              <div className="flex items-center gap-6">
+                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Footprints className="w-6 h-6 text-accent-purple" />
+                </div>
+                <div className="flex-grow">
+                  <h3 className="text-xl font-bold mb-1">Camminatore Esperto</h3>
+                  <p className="text-neutral-600 mb-4">Cammina tre chilometri in una giornata venti volte in un mese</p>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '60%' }}></div>
+                  </div>
+                  <div className="flex justify-between mt-2">
+                    <span className="text-sm text-neutral-600">60% completato</span>
+                    <span className="text-sm font-bold text-accent-purple">+120 punti</span>
                   </div>
                 </div>
               </div>
