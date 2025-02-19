@@ -58,8 +58,7 @@ const Navigation = () => {
         
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center gap-4">
-          <button onClick={() => handleNavigation('classifica')} className={navLinkClass}>Classifica</button>
-          <button onClick={() => handleNavigation('mappa')} className={navLinkClass}>Mappa</button>
+          <Link to="/chi-siamo" className={navLinkClass}>Chi siamo</Link>
           <div className="relative" ref={dropdownRef}>
             <button 
               onClick={() => setIsRewardsOpen(!isRewardsOpen)} 
@@ -85,7 +84,8 @@ const Navigation = () => {
               </div>
             )}
           </div>
-          <Link to="/chi-siamo" className={navLinkClass}>Chi siamo</Link>
+          <button onClick={() => handleNavigation('classifica')} className={navLinkClass}>Classifica</button>
+          <button onClick={() => handleNavigation('mappa')} className={navLinkClass}>Mappa</button>
         </div>
         
         <div className="hidden md:flex items-center gap-4">
@@ -97,7 +97,7 @@ const Navigation = () => {
           </button>
         </div>
 
-        {/* Mobile Menu Button */}
+        {/* Mobile Menu */}
         <button className="md:hidden p-2 hover:bg-white/10 rounded-full transition-colors" onClick={() => setIsMenuOpen(!isMenuOpen)}>
           <Menu className="w-6 h-6 text-white" />
         </button>
@@ -112,13 +112,14 @@ const Navigation = () => {
           transition={{ duration: 0.2 }}
         >
           <div className="flex flex-col gap-4">
-            <button onClick={() => handleNavigation('classifica')} className={dropdownLinkClass}>Classifica</button>
-            <button onClick={() => handleNavigation('mappa')} className={dropdownLinkClass}>Mappa</button>
+            <Link to="/chi-siamo" className={dropdownLinkClass}>Chi siamo</Link>
             <div className="border-t border-white/10 my-2"></div>
             <button onClick={() => handleNavigation('sfide')} className={dropdownLinkClass}>Sfide Disponibili</button>
             <button onClick={() => handleNavigation('riscatta')} className={dropdownLinkClass}>Riscatta le tue ricompense</button>
             <div className="border-t border-white/10 my-2"></div>
-            <Link to="/chi-siamo" className={dropdownLinkClass}>Chi siamo</Link>
+            <button onClick={() => handleNavigation('classifica')} className={dropdownLinkClass}>Classifica</button>
+            <button onClick={() => handleNavigation('mappa')} className={dropdownLinkClass}>Mappa</button>
+            <div className="border-t border-white/10 my-2"></div>
             <Link to="/accedi" className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
               Accedi
             </Link>
