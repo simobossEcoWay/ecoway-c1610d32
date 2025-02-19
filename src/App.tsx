@@ -17,6 +17,9 @@ function ScrollManager() {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // Scroll to top on page navigation
+    window.scrollTo(0, 0);
+
     // Check for section parameter in URL
     const params = new URLSearchParams(location.search);
     const section = params.get('section');
