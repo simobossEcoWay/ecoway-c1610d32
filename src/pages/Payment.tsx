@@ -32,7 +32,7 @@ const Payment = () => {
             <Card className="glass-panel p-8 rounded-2xl">
               <div className="text-center mb-8">
                 <h1 className="heading-lg">Piano Premium</h1>
-                <p className="text-neutral-400 mt-4">€4.99/mese</p>
+                <p className="text-neutral-400 mt-4">€2.99/mese</p>
               </div>
 
               <div className="space-y-6">
@@ -104,7 +104,7 @@ const Payment = () => {
                   </div>
 
                   <button type="submit" className="button-secondary w-full">
-                    Paga €4.99
+                    Paga €2.99
                   </button>
                 </form>
               </div>
