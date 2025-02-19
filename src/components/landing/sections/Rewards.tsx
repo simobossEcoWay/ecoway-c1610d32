@@ -20,60 +20,62 @@ const Rewards = () => {
         {/* Challenges Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
-          <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 max-w-5xl mx-auto">
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Battery className="w-6 h-6 text-accent-purple" />
+          <div className="relative">
+            <div className="flex overflow-x-auto gap-6 pb-4 px-4 snap-x snap-mandatory scroll-smooth hide-scrollbar">
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px] flex-shrink-0 snap-center">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Battery className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Ricarica Completa</h3>
+                  <p className="text-neutral-600">Ricarica la batteria della tua macchina fino al 100%</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+50</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '75%' }}></div>
+                  </div>
+                  <div className="text-sm text-neutral-600">75% completato</div>
                 </div>
-                <h3 className="text-xl font-bold">Ricarica Completa</h3>
-                <p className="text-neutral-600">Ricarica la batteria della tua macchina fino al 100%</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+50</div>
-                  <div className="text-sm text-neutral-600">punti</div>
-                </div>
-                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '75%' }}></div>
-                </div>
-                <div className="text-sm text-neutral-600">75% completato</div>
-              </div>
-            </Card>
+              </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Car className="w-6 h-6 text-accent-purple" />
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px] flex-shrink-0 snap-center">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Car className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Guida Efficiente</h3>
+                  <p className="text-neutral-600">Mantieni un consumo medio sotto i 15 kWh/100km per una settimana</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+100</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '45%' }}></div>
+                  </div>
+                  <div className="text-sm text-neutral-600">45% completato</div>
                 </div>
-                <h3 className="text-xl font-bold">Guida Efficiente</h3>
-                <p className="text-neutral-600">Mantieni un consumo medio sotto i 15 kWh/100km per una settimana</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+100</div>
-                  <div className="text-sm text-neutral-600">punti</div>
-                </div>
-                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '45%' }}></div>
-                </div>
-                <div className="text-sm text-neutral-600">45% completato</div>
-              </div>
-            </Card>
+              </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
-              <div className="text-center space-y-4">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                  <Bike className="w-6 h-6 text-accent-purple" />
+              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px] flex-shrink-0 snap-center">
+                <div className="text-center space-y-4">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
+                    <Bike className="w-6 h-6 text-accent-purple" />
+                  </div>
+                  <h3 className="text-xl font-bold">Mobilità Alternativa</h3>
+                  <p className="text-neutral-600">Usa la bici o i mezzi pubblici per 5 giorni consecutivi</p>
+                  <div className="pt-4">
+                    <div className="text-2xl font-bold text-accent-purple">+75</div>
+                    <div className="text-sm text-neutral-600">punti</div>
+                  </div>
+                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '30%' }}></div>
+                  </div>
+                  <div className="text-sm text-neutral-600">30% completato</div>
                 </div>
-                <h3 className="text-xl font-bold">Mobilità Alternativa</h3>
-                <p className="text-neutral-600">Usa la bici o i mezzi pubblici per 5 giorni consecutivi</p>
-                <div className="pt-4">
-                  <div className="text-2xl font-bold text-accent-purple">+75</div>
-                  <div className="text-sm text-neutral-600">punti</div>
-                </div>
-                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '30%' }}></div>
-                </div>
-                <div className="text-sm text-neutral-600">30% completato</div>
-              </div>
-            </Card>
+              </Card>
+            </div>
           </div>
         </div>
 
@@ -139,6 +141,18 @@ const Rewards = () => {
           </Card>
         </div>
       </div>
+
+      <style>
+        {`
+          .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+          }
+          .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+          }
+        `}
+      </style>
     </section>
   );
 };
