@@ -1,9 +1,58 @@
-
 import { Card } from "@/components/ui/card";
-import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift } from "lucide-react";
+import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift, ChevronDown, ChevronUp } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
+import { useState } from "react";
 
 const Rewards = () => {
+  const [showAllChallenges, setShowAllChallenges] = useState(false);
+
+  const challenges = [
+    {
+      icon: Battery,
+      title: "Ricarica Completa",
+      description: "Ricarica la batteria della tua macchina fino al 100%",
+      progress: 75,
+      points: 50
+    },
+    {
+      icon: Car,
+      title: "Guida Efficiente",
+      description: "Mantieni un consumo medio sotto i 15 kWh/100km per una settimana",
+      progress: 45,
+      points: 100
+    },
+    {
+      icon: Bike,
+      title: "Mobilità Alternativa",
+      description: "Usa la bici o i mezzi pubblici per 5 giorni consecutivi",
+      progress: 30,
+      points: 75
+    },
+    {
+      icon: Calendar,
+      title: "Mobilità Elettrica",
+      description: "Guida una macchina elettrica per 15 giorni di fila",
+      progress: 20,
+      points: 150
+    },
+    {
+      icon: TreePine,
+      title: "Amante dei Parchi",
+      description: "Frequenta un parco 10 volte in un mese",
+      progress: 40,
+      points: 80
+    },
+    {
+      icon: Footprints,
+      title: "Camminatore Esperto",
+      description: "Cammina tre chilometri in una giornata venti volte in un mese",
+      progress: 60,
+      points: 120
+    }
+  ];
+
+  const visibleChallenges = showAllChallenges ? challenges : challenges.slice(0, 3);
+
   return (
     <section id="ricompense" className="py-24 min-h-screen">
       <div className="container-padding">
@@ -21,119 +70,44 @@ const Rewards = () => {
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
           <div className="max-w-2xl mx-auto space-y-6">
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Battery className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Ricarica Completa</h3>
-                  <p className="text-neutral-600 mb-4">Ricarica la batteria della tua macchina fino al 100%</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '75%' }}></div>
+            {visibleChallenges.map((challenge, index) => (
+              <Card key={index} className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
+                <div className="flex items-center gap-6">
+                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
+                    <challenge.icon className="w-6 h-6 text-accent-purple" />
                   </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">75% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+50 punti</span>
+                  <div className="flex-grow">
+                    <h3 className="text-xl font-bold mb-1">{challenge.title}</h3>
+                    <p className="text-neutral-600 mb-4">{challenge.description}</p>
+                    <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                      <div 
+                        className="bg-accent-purple h-full rounded-full" 
+                        style={{ width: `${challenge.progress}%` }}
+                      />
+                    </div>
+                    <div className="flex justify-between mt-2">
+                      <span className="text-sm text-neutral-600">{challenge.progress}% completato</span>
+                      <span className="text-sm font-bold text-accent-purple">+{challenge.points} punti</span>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </Card>
+              </Card>
+            ))}
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Car className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Guida Efficiente</h3>
-                  <p className="text-neutral-600 mb-4">Mantieni un consumo medio sotto i 15 kWh/100km per una settimana</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '45%' }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">45% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+100 punti</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Bike className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Mobilità Alternativa</h3>
-                  <p className="text-neutral-600 mb-4">Usa la bici o i mezzi pubblici per 5 giorni consecutivi</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '30%' }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">30% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+75 punti</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Mobilità Elettrica</h3>
-                  <p className="text-neutral-600 mb-4">Guida una macchina elettrica per 15 giorni di fila</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '20%' }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">20% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+150 punti</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <TreePine className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Amante dei Parchi</h3>
-                  <p className="text-neutral-600 mb-4">Frequenta un parco 10 volte in un mese</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '40%' }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">40% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+80 punti</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
-
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
-              <div className="flex items-center gap-6">
-                <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Footprints className="w-6 h-6 text-accent-purple" />
-                </div>
-                <div className="flex-grow">
-                  <h3 className="text-xl font-bold mb-1">Camminatore Esperto</h3>
-                  <p className="text-neutral-600 mb-4">Cammina tre chilometri in una giornata venti volte in un mese</p>
-                  <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
-                    <div className="bg-accent-purple h-full rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                  <div className="flex justify-between mt-2">
-                    <span className="text-sm text-neutral-600">60% completato</span>
-                    <span className="text-sm font-bold text-accent-purple">+120 punti</span>
-                  </div>
-                </div>
-              </div>
-            </Card>
+            <button
+              onClick={() => setShowAllChallenges(!showAllChallenges)}
+              className="w-full py-4 px-6 rounded-xl glass-panel hover:bg-accent-purple/5 
+                transition-all duration-200 flex items-center justify-center gap-2 group"
+            >
+              <span className="text-accent-purple font-medium">
+                {showAllChallenges ? "Mostra meno sfide" : "Mostra altre sfide"}
+              </span>
+              {showAllChallenges ? (
+                <ChevronUp className="w-5 h-5 text-accent-purple group-hover:transform group-hover:-translate-y-1 transition-transform" />
+              ) : (
+                <ChevronDown className="w-5 h-5 text-accent-purple group-hover:transform group-hover:translate-y-1 transition-transform" />
+              )}
+            </button>
           </div>
         </div>
 
