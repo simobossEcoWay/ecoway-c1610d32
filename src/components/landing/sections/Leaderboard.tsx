@@ -69,7 +69,7 @@ const Leaderboard = () => {
   };
 
   return (
-    <section id="classifica" className="py-24 min-h-screen">
+    <section id="classifica" className="py-16 min-h-screen">
       <div className="container-padding">
         <div className="text-center mb-16">
           <span className="bg-accent-purple/10 text-accent-purple px-4 py-1.5 rounded-full text-sm font-medium">

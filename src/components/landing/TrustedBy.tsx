@@ -8,7 +8,7 @@ const TrustedBy = () => {
   ];
 
   return (
-    <section className="py-24 bg-black/40">
+    <section className="py-12 bg-black/40">
       <div className="container-padding">
         <p className="text-center text-neutral-400 mb-12">Risparmia grazie a EcoWay</p>
         <div className="flex flex-wrap justify-center items-center gap-12">
