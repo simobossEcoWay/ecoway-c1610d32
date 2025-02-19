@@ -14,10 +14,10 @@ const Hero = () => {
 
     if (isIOS) {
       // Replace with your actual App Store URL when available
-      window.location.href = "https://apps.apple.com/app/YOUR_APP_ID";
+      window.location.href = "https://apps.apple.com/app/idTUO_APP_ID";
     } else if (isAndroid) {
       // Replace with your actual Play Store URL when available
-      window.location.href = "https://play.google.com/store/apps/details?id=YOUR_APP_ID";
+      window.location.href = "https://play.google.com/store/apps/details?id=tuo.package";
     } else {
       // If on desktop or unsupported device, show a toast message
       toast({
@@ -64,13 +64,14 @@ const Hero = () => {
         duration: 0.5,
         delay: 0.4
       }}>
-          <button 
-            className="button-primary flex items-center gap-2"
-            onClick={handleDownload}
-          >
-            Scarica
+          <a href="https://play.google.com/store/apps/details?id=tuo.package" target="_blank" rel="noopener noreferrer" className="button-primary flex items-center gap-2">
+            Scarica su Google Play
             <Download size={20} />
-          </button>
+          </a>
+          <a href="https://apps.apple.com/app/idTUO_APP_ID" target="_blank" rel="noopener noreferrer" className="button-primary flex items-center gap-2">
+            Scarica su App Store
+            <Download size={20} />
+          </a>
         </motion.div>
       </div>
     </header>;
