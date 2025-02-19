@@ -1,6 +1,6 @@
 
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, UserRound, UserCheck, UserPlus, UserMinus } from "lucide-react";
+import { Crown, Trophy, Medal, Leaf, Tree, Bicycle, Car, House, Sprout, Coffee } from "lucide-react";
 
 const Leaderboard = () => {
   const leaderboardData = [{
@@ -64,18 +64,21 @@ const Leaderboard = () => {
       case 3:
         return <Medal className="w-5 h-5 text-amber-700" />;
       case 4:
+        return <Tree className="w-5 h-5 text-neutral-600" />;
       case 5:
-        return <UserRound className="w-5 h-5 text-neutral-600" />;
+        return <Bicycle className="w-5 h-5 text-neutral-600" />;
       case 6:
+        return <Leaf className="w-5 h-5 text-neutral-600" />;
       case 7:
-        return <UserCheck className="w-5 h-5 text-neutral-600" />;
+        return <Car className="w-5 h-5 text-neutral-600" />;
       case 8:
+        return <House className="w-5 h-5 text-neutral-600" />;
       case 9:
-        return <UserPlus className="w-5 h-5 text-neutral-600" />;
+        return <Sprout className="w-5 h-5 text-neutral-600" />;
       case 10:
-        return <UserMinus className="w-5 h-5 text-neutral-600" />;
+        return <Coffee className="w-5 h-5 text-neutral-600" />;
       default:
-        return <UserRound className="w-5 h-5 text-neutral-600" />;
+        return <Leaf className="w-5 h-5 text-neutral-600" />;
     }
   };
 
