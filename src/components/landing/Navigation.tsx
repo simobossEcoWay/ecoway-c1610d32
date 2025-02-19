@@ -1,5 +1,5 @@
 
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Menu, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
@@ -10,7 +10,21 @@ const Navigation = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
+  const dropdownRef = useRef<HTMLDivElement>(null);
   
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+        setIsRewardsOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   const handleNavigation = (sectionId: string) => {
     if (isHomePage) {
       // If we're on homepage, scroll to section
@@ -46,7 +60,7 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-4">
           <button onClick={() => handleNavigation('classifica')} className={navLinkClass}>Classifica</button>
           <button onClick={() => handleNavigation('mappa')} className={navLinkClass}>Mappa</button>
-          <div className="relative">
+          <div className="relative" ref={dropdownRef}>
             <button 
               onClick={() => setIsRewardsOpen(!isRewardsOpen)} 
               className={`${navLinkClass} flex items-center gap-1`}
