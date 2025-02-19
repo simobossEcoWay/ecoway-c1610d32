@@ -68,7 +68,7 @@ const Rewards = () => {
         </div>
 
         {/* Challenges Section */}
-        <div className="mb-16">
+        <div className="mb-16" id="sfide">
           <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
           <div className="max-w-2xl mx-auto space-y-6">
             {visibleChallenges.map((challenge, index) => (
@@ -113,7 +113,7 @@ const Rewards = () => {
         </div>
 
         {/* Store Discounts Section */}
-        <div>
+        <div id="riscatta">
           <h3 className="text-2xl font-bold text-center mb-8">Riscatta le tue ricompense</h3>
           <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
             <div className="space-y-4">
