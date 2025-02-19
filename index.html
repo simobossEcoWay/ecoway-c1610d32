@@ -17,12 +17,20 @@
 </body>
 
 </html>/
-    color: #00AEEF !important; /* Cambia il colore del testo */
-    background-color: #00AEEF !important; /* Cambia il colore dello sfondo */
-    border-color: #00AEEF !important; /* Cambia i bordi */
-}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll("*").forEach(el => {
+        let style = window.getComputedStyle(el);
 
-/* Se hai usato sfumature o varianti di verde */
-body * {
-    filter: hue-rotate(150deg); /* Cambia il verde in azzurro */
-}
+        if (style.color === "rgb(0, 128, 0)") {
+            el.style.color = "#00AEEF";
+        }
+        if (style.backgroundColor === "rgb(0, 128, 0)") {
+            el.style.backgroundColor = "#00AEEF";
+        }
+        if (style.borderColor === "rgb(0, 128, 0)") {
+            el.style.borderColor = "#00AEEF";
+        }
+    });
+});
+</script>
