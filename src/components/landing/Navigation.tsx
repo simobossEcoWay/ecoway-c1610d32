@@ -1,11 +1,12 @@
 
 import { useState } from "react";
-import { Menu } from "lucide-react";
+import { Menu, ChevronDown } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRewardsOpen, setIsRewardsOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const isHomePage = location.pathname === '/';
@@ -24,9 +25,11 @@ const Navigation = () => {
       navigate('/?section=' + sectionId);
     }
     setIsMenuOpen(false);
+    setIsRewardsOpen(false);
   };
   
   const navLinkClass = "text-white font-medium px-3 py-1.5 rounded-full hover:bg-[#5a8f67] backdrop-blur-sm transition-all duration-200 shadow-sm hover:text-white hover:scale-110";
+  const dropdownLinkClass = "text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105 w-full";
   
   return <nav className="fixed top-4 left-1/2 -translate-x-1/2 w-[95%] max-w-6xl z-50">
       <div className="glass-panel rounded-full px-6 py-4 flex items-center justify-between shadow-lg backdrop-blur-md">
@@ -43,7 +46,31 @@ const Navigation = () => {
         <div className="hidden md:flex items-center gap-4">
           <button onClick={() => handleNavigation('classifica')} className={navLinkClass}>Classifica</button>
           <button onClick={() => handleNavigation('mappa')} className={navLinkClass}>Mappa</button>
-          <button onClick={() => handleNavigation('ricompense')} className={navLinkClass}>Ricompense</button>
+          <div className="relative">
+            <button 
+              onClick={() => setIsRewardsOpen(!isRewardsOpen)} 
+              className={`${navLinkClass} flex items-center gap-1`}
+            >
+              Ricompense
+              <ChevronDown className="w-4 h-4" />
+            </button>
+            {isRewardsOpen && (
+              <div className="absolute top-full left-0 mt-2 w-64 glass-panel rounded-xl p-2 shadow-lg">
+                <button 
+                  onClick={() => handleNavigation('sfide')} 
+                  className={dropdownLinkClass}
+                >
+                  Sfide Disponibili
+                </button>
+                <button 
+                  onClick={() => handleNavigation('riscatta')} 
+                  className={dropdownLinkClass}
+                >
+                  Riscatta le tue ricompense
+                </button>
+              </div>
+            )}
+          </div>
           <Link to="/chi-siamo" className={navLinkClass}>Chi siamo</Link>
         </div>
         
@@ -63,21 +90,21 @@ const Navigation = () => {
       </div>
 
       {/* Mobile Navigation */}
-      {isMenuOpen && <motion.div className="md:hidden glass-panel mt-2 rounded-xl p-4 shadow-lg" initial={{
-      opacity: 0,
-      y: -20
-    }} animate={{
-      opacity: 1,
-      y: 0
-    }} transition={{
-      duration: 0.2
-    }}>
+      {isMenuOpen && (
+        <motion.div 
+          className="md:hidden glass-panel mt-2 rounded-xl p-4 shadow-lg" 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2 }}
+        >
           <div className="flex flex-col gap-4">
-            <button onClick={() => handleNavigation('classifica')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Classifica</button>
-            <button onClick={() => handleNavigation('mappa')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Mappa</button>
-            <button onClick={() => handleNavigation('ricompense')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Ricompense</button>
-            <Link to="/chi-siamo" className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all hover:scale-105">Chi siamo</Link>
-            <hr className="border-white/10" />
+            <button onClick={() => handleNavigation('classifica')} className={dropdownLinkClass}>Classifica</button>
+            <button onClick={() => handleNavigation('mappa')} className={dropdownLinkClass}>Mappa</button>
+            <div className="border-t border-white/10 my-2"></div>
+            <button onClick={() => handleNavigation('sfide')} className={dropdownLinkClass}>Sfide Disponibili</button>
+            <button onClick={() => handleNavigation('riscatta')} className={dropdownLinkClass}>Riscatta le tue ricompense</button>
+            <div className="border-t border-white/10 my-2"></div>
+            <Link to="/chi-siamo" className={dropdownLinkClass}>Chi siamo</Link>
             <Link to="/accedi" className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
               Accedi
             </Link>
@@ -85,7 +112,8 @@ const Navigation = () => {
               Piani
             </button>
           </div>
-        </motion.div>}
+        </motion.div>
+      )}
     </nav>;
 };
 
