@@ -73,7 +73,7 @@ const ChiSiamo = () => {
           </div>
 
           {/* Fourth Paragraph Section */}
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-24">
             <div className="glass-panel p-6 rounded-2xl order-2 md:order-1">
               {/* Placeholder for fourth image */}
               <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
@@ -87,6 +87,24 @@ const ChiSiamo = () => {
               <p className="text-neutral-400">
                 [Il testo del quarto paragrafo andrà qui]
               </p>
+            </div>
+          </div>
+
+          {/* Fifth Paragraph Section */}
+          <div className="grid md:grid-cols-2 gap-12 items-center">
+            <div className="space-y-6">
+              <h2 className="text-2xl font-bold text-white">
+                [Titolo Paragrafo 5]
+              </h2>
+              <p className="text-neutral-400">
+                [Il testo del quinto paragrafo andrà qui]
+              </p>
+            </div>
+            <div className="glass-panel p-6 rounded-2xl">
+              {/* Placeholder for fifth image */}
+              <div className="w-full h-64 bg-neutral-800 rounded-lg flex items-center justify-center text-neutral-400">
+                Immagine 5
+              </div>
             </div>
           </div>
         </div>
