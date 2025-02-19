@@ -1,5 +1,6 @@
+
 import { Card } from "@/components/ui/card";
-import { Battery, Car, Bike, Park, Footprints, Calendar } from "lucide-react";
+import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
 
 const Rewards = () => {
@@ -99,7 +100,7 @@ const Rewards = () => {
             <Card className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
               <div className="flex items-center gap-6">
                 <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
-                  <Park className="w-6 h-6 text-accent-purple" />
+                  <TreePine className="w-6 h-6 text-accent-purple" />
                 </div>
                 <div className="flex-grow">
                   <h3 className="text-xl font-bold mb-1">Amante dei Parchi</h3>
@@ -146,7 +147,7 @@ const Rewards = () => {
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center 
                       group-hover:bg-accent-purple/20">
-                    <Tag className="w-6 h-6 text-accent-purple" />
+                    <ShoppingBag className="w-6 h-6 text-accent-purple" />
                   </div>
                   <div>
                     <h3 className="text-xl font-bold group-hover:text-accent-purple transition-colors">Sconto Colombo</h3>
