@@ -6,52 +6,52 @@ const Leaderboard = () => {
   const leaderboardData = [{
     position: 1,
     name: "Marco R.",
-    points: 1345,
+    points: 27000,
     city: "Milano"
   }, {
     position: 2,
     name: "Laura B.",
-    points: 1298,
+    points: 24567,
     city: "Roma"
   }, {
     position: 3,
     name: "Andrea M.",
-    points: 1245,
+    points: 22345,
     city: "Torino"
   }, {
     position: 4,
     name: "Sofia C.",
-    points: 1156,
+    points: 19876,
     city: "Firenze"
   }, {
     position: 5,
     name: "Giuseppe D.",
-    points: 1089,
+    points: 17654,
     city: "Bologna"
   }, {
     position: 6,
     name: "Valentina P.",
-    points: 987,
+    points: 15432,
     city: "Venezia"
   }, {
     position: 7,
     name: "Alessandro F.",
-    points: 945,
+    points: 13210,
     city: "Napoli"
   }, {
     position: 8,
     name: "Chiara M.",
-    points: 878,
+    points: 11987,
     city: "Palermo"
   }, {
     position: 9,
     name: "Roberto L.",
-    points: 834,
+    points: 10765,
     city: "Genova"
   }, {
     position: 10,
     name: "Elena G.",
-    points: 789,
+    points: 9543,
     city: "Bari"
   }];
 
