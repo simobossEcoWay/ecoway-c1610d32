@@ -188,49 +188,57 @@ const Sections = () => {
           {/* Store Discounts Section */}
           <div>
             <h3 className="text-2xl font-bold text-center mb-8">Sconti nei Negozi</h3>
-            <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-                <div className="text-center space-y-4">
-                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                    <Tag className="w-6 h-6 text-accent-purple" />
+            <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
+              <div className="space-y-4">
+                <div className="flex items-center justify-between p-4 rounded-lg hover:bg-neutral-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center">
+                      <Tag className="w-6 h-6 text-accent-purple" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">Sconto Colombo</h3>
+                      <p className="text-neutral-600">10% di sconto su tutti i prodotti da Colombo</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold">Sconto Colombo</h3>
-                  <p className="text-neutral-600">10% di sconto su tutti i prodotti da Colombo</p>
-                  <div className="pt-4">
+                  <div className="text-center">
                     <div className="text-2xl font-bold text-accent-purple">500</div>
                     <div className="text-sm text-neutral-600">punti necessari</div>
                   </div>
                 </div>
-              </Card>
 
-              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-                <div className="text-center space-y-4">
-                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                    <Percent className="w-6 h-6 text-accent-purple" />
+                <div className="flex items-center justify-between p-4 rounded-lg hover:bg-neutral-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center">
+                      <Percent className="w-6 h-6 text-accent-purple" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">Sconto Lanzarotti</h3>
+                      <p className="text-neutral-600">20% di sconto da Lanzarotti</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold">Sconto Lanzarotti</h3>
-                  <p className="text-neutral-600">20% di sconto da Lanzarotti</p>
-                  <div className="pt-4">
+                  <div className="text-center">
                     <div className="text-2xl font-bold text-accent-purple">750</div>
                     <div className="text-sm text-neutral-600">punti necessari</div>
                   </div>
                 </div>
-              </Card>
 
-              <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
-                <div className="text-center space-y-4">
-                  <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
-                    <Gift className="w-6 h-6 text-accent-purple" />
+                <div className="flex items-center justify-between p-4 rounded-lg hover:bg-neutral-50 transition-colors">
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center">
+                      <Gift className="w-6 h-6 text-accent-purple" />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-bold">Buono Regalo</h3>
+                      <p className="text-neutral-600">Buono regalo da 50€ per il tuo negozio preferito</p>
+                    </div>
                   </div>
-                  <h3 className="text-xl font-bold">Buono Regalo</h3>
-                  <p className="text-neutral-600">Buono regalo da 50€ per il tuo negozio preferito</p>
-                  <div className="pt-4">
+                  <div className="text-center">
                     <div className="text-2xl font-bold text-accent-purple">1000</div>
                     <div className="text-sm text-neutral-600">punti necessari</div>
                   </div>
                 </div>
-              </Card>
-            </div>
+              </div>
+            </Card>
           </div>
         </div>
       </section>
