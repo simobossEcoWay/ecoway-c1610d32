@@ -1,6 +1,6 @@
 
 import { Card } from "@/components/ui/card";
-import { Crown, Trophy, Medal, User } from "lucide-react";
+import { Crown, Trophy, Medal, UserRound, UserCheck, UserPlus, UserMinus } from "lucide-react";
 
 const Leaderboard = () => {
   const leaderboardData = [{
@@ -63,8 +63,19 @@ const Leaderboard = () => {
         return <Trophy className="w-5 h-5 text-gray-400" />;
       case 3:
         return <Medal className="w-5 h-5 text-amber-700" />;
+      case 4:
+      case 5:
+        return <UserRound className="w-5 h-5 text-neutral-600" />;
+      case 6:
+      case 7:
+        return <UserCheck className="w-5 h-5 text-neutral-600" />;
+      case 8:
+      case 9:
+        return <UserPlus className="w-5 h-5 text-neutral-600" />;
+      case 10:
+        return <UserMinus className="w-5 h-5 text-neutral-600" />;
       default:
-        return <User className="w-5 h-5 text-neutral-600" />;
+        return <UserRound className="w-5 h-5 text-neutral-600" />;
     }
   };
 
