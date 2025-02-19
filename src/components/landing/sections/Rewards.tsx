@@ -1,10 +1,12 @@
+
 import { Card } from "@/components/ui/card";
-import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift, ChevronDown, ChevronUp } from "lucide-react";
+import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift, ChevronDown, ChevronUp, Info } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
 import { useState } from "react";
 
 const Rewards = () => {
   const [showAllChallenges, setShowAllChallenges] = useState(false);
+  const [expandedChallenge, setExpandedChallenge] = useState<number | null>(null);
 
   const handlePlusClick = () => {
     const pianiSection = document.getElementById('piani');
@@ -18,6 +20,12 @@ const Rewards = () => {
       icon: Battery,
       title: "Ricarica Completa",
       description: "Ricarica la batteria della tua macchina fino al 100%",
+      details: [
+        "Effettua una ricarica completa della tua auto elettrica",
+        "Assicurati che la batteria raggiunga il 100%",
+        "La sfida viene completata una volta raggiunto il 100%",
+        "Puoi monitorare lo stato di ricarica dall'app"
+      ],
       progress: 0,
       points: 50,
       isPlusOnly: false
@@ -26,6 +34,12 @@ const Rewards = () => {
       icon: Car,
       title: "Guida Efficiente",
       description: "Mantieni un consumo medio sotto i 15 kWh/100km per una settimana",
+      details: [
+        "Monitora il tuo consumo energetico durante la guida",
+        "Mantieni una media inferiore a 15 kWh/100km",
+        "Il periodo di monitoraggio è di 7 giorni consecutivi",
+        "Usa uno stile di guida efficiente e pianifica i percorsi"
+      ],
       progress: 0,
       points: 100,
       isPlusOnly: false
@@ -34,6 +48,7 @@ const Rewards = () => {
       icon: Bike,
       title: "Mobilità Alternativa",
       description: "Usa la bici o i mezzi pubblici per 5 giorni consecutivi",
+      details: [],
       progress: 0,
       points: 75,
       isPlusOnly: true
@@ -42,6 +57,12 @@ const Rewards = () => {
       icon: Calendar,
       title: "Mobilità Elettrica",
       description: "Guida una macchina elettrica per 15 giorni di fila",
+      details: [
+        "Utilizza esclusivamente un veicolo elettrico",
+        "Il conteggio si azzera se viene utilizzato un veicolo tradizionale",
+        "Periodo di monitoraggio: 15 giorni consecutivi",
+        "Registra ogni viaggio nell'app"
+      ],
       progress: 0,
       points: 150,
       isPlusOnly: false
@@ -50,6 +71,12 @@ const Rewards = () => {
       icon: TreePine,
       title: "Amante dei Parchi",
       description: "Frequenta un parco 10 volte in un mese",
+      details: [
+        "Visita qualsiasi parco pubblico della tua città",
+        "Registra la tua presenza tramite l'app",
+        "Le visite devono essere in giorni diversi",
+        "Hai 30 giorni per completare la sfida"
+      ],
       progress: 0,
       points: 80,
       isPlusOnly: false
@@ -58,6 +85,7 @@ const Rewards = () => {
       icon: Footprints,
       title: "Camminatore Esperto",
       description: "Cammina tre chilometri in una giornata venti volte in un mese",
+      details: [],
       progress: 0,
       points: 120,
       isPlusOnly: true
@@ -65,6 +93,14 @@ const Rewards = () => {
   ];
 
   const visibleChallenges = showAllChallenges ? challenges : challenges.slice(0, 3);
+
+  const handleChallengeClick = (index: number, isPlusOnly: boolean) => {
+    if (isPlusOnly) {
+      handlePlusClick();
+    } else {
+      setExpandedChallenge(expandedChallenge === index ? null : index);
+    }
+  };
 
   return (
     <section id="ricompense" className="py-24 min-h-screen">
@@ -86,10 +122,8 @@ const Rewards = () => {
             {visibleChallenges.map((challenge, index) => (
               <Card 
                 key={index} 
-                className={`glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200 ${
-                  challenge.isPlusOnly ? 'cursor-pointer' : ''
-                }`}
-                onClick={() => challenge.isPlusOnly && handlePlusClick()}
+                className={`glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200 cursor-pointer`}
+                onClick={() => handleChallengeClick(index, challenge.isPlusOnly)}
               >
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
@@ -115,6 +149,24 @@ const Rewards = () => {
                       <span className="text-sm text-neutral-600">{challenge.progress}% completato</span>
                       <span className="text-sm font-bold text-accent-purple">+{challenge.points} punti</span>
                     </div>
+
+                    {/* Expanded Details */}
+                    {expandedChallenge === index && !challenge.isPlusOnly && challenge.details.length > 0 && (
+                      <div className="mt-6 pt-6 border-t border-neutral-200">
+                        <div className="flex items-center gap-2 mb-4">
+                          <Info className="w-5 h-5 text-accent-purple" />
+                          <h4 className="font-semibold text-lg">Dettagli della sfida</h4>
+                        </div>
+                        <ul className="space-y-2">
+                          {challenge.details.map((detail, idx) => (
+                            <li key={idx} className="flex items-start gap-2 text-neutral-600">
+                              <span className="w-1.5 h-1.5 rounded-full bg-accent-purple mt-2 flex-shrink-0" />
+                              {detail}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </div>
               </Card>
