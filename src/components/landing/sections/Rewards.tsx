@@ -1,6 +1,7 @@
 
 import { Card } from "@/components/ui/card";
 import { Battery, Car, Bike, Percent, Gift, Tag } from "lucide-react";
+import * as Progress from "@radix-ui/react-progress";
 
 const Rewards = () => {
   return (
@@ -19,8 +20,8 @@ const Rewards = () => {
         {/* Challenges Section */}
         <div className="mb-16">
           <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+          <div className="flex flex-nowrap overflow-x-auto gap-6 pb-4 max-w-5xl mx-auto">
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
               <div className="text-center space-y-4">
                 <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
                   <Battery className="w-6 h-6 text-accent-purple" />
@@ -31,10 +32,14 @@ const Rewards = () => {
                   <div className="text-2xl font-bold text-accent-purple">+50</div>
                   <div className="text-sm text-neutral-600">punti</div>
                 </div>
+                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '75%' }}></div>
+                </div>
+                <div className="text-sm text-neutral-600">75% completato</div>
               </div>
             </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
               <div className="text-center space-y-4">
                 <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
                   <Car className="w-6 h-6 text-accent-purple" />
@@ -45,10 +50,14 @@ const Rewards = () => {
                   <div className="text-2xl font-bold text-accent-purple">+100</div>
                   <div className="text-sm text-neutral-600">punti</div>
                 </div>
+                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '45%' }}></div>
+                </div>
+                <div className="text-sm text-neutral-600">45% completato</div>
               </div>
             </Card>
 
-            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200">
+            <Card className="glass-panel p-8 rounded-2xl hover:scale-105 transition-transform duration-200 min-w-[300px]">
               <div className="text-center space-y-4">
                 <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center mx-auto">
                   <Bike className="w-6 h-6 text-accent-purple" />
@@ -59,6 +68,10 @@ const Rewards = () => {
                   <div className="text-2xl font-bold text-accent-purple">+75</div>
                   <div className="text-sm text-neutral-600">punti</div>
                 </div>
+                <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
+                  <div className="bg-accent-purple h-full rounded-full" style={{ width: '30%' }}></div>
+                </div>
+                <div className="text-sm text-neutral-600">30% completato</div>
               </div>
             </Card>
           </div>
