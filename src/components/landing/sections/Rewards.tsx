@@ -1,4 +1,3 @@
-
 import { Card } from "@/components/ui/card";
 import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift, ChevronDown, ChevronUp } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
@@ -13,42 +12,48 @@ const Rewards = () => {
       title: "Ricarica Completa",
       description: "Ricarica la batteria della tua macchina fino al 100%",
       progress: 75,
-      points: 50
+      points: 50,
+      isPlusOnly: false
     },
     {
       icon: Car,
       title: "Guida Efficiente",
       description: "Mantieni un consumo medio sotto i 15 kWh/100km per una settimana",
       progress: 45,
-      points: 100
+      points: 100,
+      isPlusOnly: false
     },
     {
       icon: Bike,
       title: "Mobilità Alternativa",
       description: "Usa la bici o i mezzi pubblici per 5 giorni consecutivi",
       progress: 30,
-      points: 75
+      points: 75,
+      isPlusOnly: true
     },
     {
       icon: Calendar,
       title: "Mobilità Elettrica",
       description: "Guida una macchina elettrica per 15 giorni di fila",
       progress: 20,
-      points: 150
+      points: 150,
+      isPlusOnly: false
     },
     {
       icon: TreePine,
       title: "Amante dei Parchi",
       description: "Frequenta un parco 10 volte in un mese",
       progress: 40,
-      points: 80
+      points: 80,
+      isPlusOnly: false
     },
     {
       icon: Footprints,
       title: "Camminatore Esperto",
       description: "Cammina tre chilometri in una giornata venti volte in un mese",
       progress: 60,
-      points: 120
+      points: 120,
+      isPlusOnly: true
     }
   ];
 
@@ -78,7 +83,14 @@ const Rewards = () => {
                     <challenge.icon className="w-6 h-6 text-accent-purple" />
                   </div>
                   <div className="flex-grow">
-                    <h3 className="text-xl font-bold mb-1">{challenge.title}</h3>
+                    <div className="flex items-center gap-3 mb-1">
+                      <h3 className="text-xl font-bold">{challenge.title}</h3>
+                      {challenge.isPlusOnly && (
+                        <span className="bg-accent-purple/10 text-accent-purple px-2 py-0.5 rounded-full text-xs font-medium">
+                          Plus
+                        </span>
+                      )}
+                    </div>
                     <p className="text-neutral-600 mb-4">{challenge.description}</p>
                     <div className="w-full bg-neutral-800 h-2 rounded-full overflow-hidden">
                       <div 
