@@ -1,3 +1,4 @@
+
 import { Card } from "@/components/ui/card";
 import { Battery, Car, Bike, TreePine, Footprints, Calendar, ShoppingBag, Percent, Gift, ChevronDown, ChevronUp } from "lucide-react";
 import * as Progress from "@radix-ui/react-progress";
@@ -113,7 +114,7 @@ const Rewards = () => {
 
         {/* Store Discounts Section */}
         <div>
-          <h3 className="text-2xl font-bold text-center mb-8">Sconti nei Negozi</h3>
+          <h3 className="text-2xl font-bold text-center mb-8">Riscatta le tue ricompense</h3>
           <Card className="glass-panel p-8 rounded-2xl max-w-4xl mx-auto">
             <div className="space-y-4">
               <div className="flex items-center justify-between p-4 rounded-lg hover:bg-neutral-50 transition-colors cursor-pointer
