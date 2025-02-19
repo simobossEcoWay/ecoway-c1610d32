@@ -1,8 +1,11 @@
 
 import { Card } from "@/components/ui/card";
 import { Crown, Trophy, Medal } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Plans = () => {
+  const navigate = useNavigate();
+
   return (
     <section id="piani" className="py-24 min-h-screen bg-[#121212]">
       <div className="container-padding">
@@ -31,7 +34,9 @@ const Plans = () => {
                   Sfide base
                 </li>
               </ul>
-              <button className="button-primary w-full">Inizia Ora</button>
+              <button onClick={() => navigate('/accedi')} className="button-primary w-full">
+                Inizia Ora
+              </button>
             </div>
           </Card>
           <Card className="glass-panel p-8 rounded-2xl">
@@ -49,7 +54,9 @@ const Plans = () => {
                   Ricompense esclusive
                 </li>
               </ul>
-              <button className="button-primary w-full">Abbonati Ora</button>
+              <button onClick={() => navigate('/payment')} className="button-primary w-full">
+                Abbonati Ora
+              </button>
             </div>
           </Card>
         </div>
