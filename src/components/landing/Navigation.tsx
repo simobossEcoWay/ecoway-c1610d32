@@ -48,9 +48,9 @@ const Navigation = () => {
         </div>
         
         <div className="hidden md:flex items-center gap-4">
-          <button className="px-4 py-2 text-white hover:text-white/90 transition-colors font-medium bg-black/20 rounded-full backdrop-blur-sm">
+          <Link to="/accedi" className="px-4 py-2 text-white hover:text-white/90 transition-colors font-medium bg-black/20 rounded-full backdrop-blur-sm">
             Accedi
-          </button>
+          </Link>
           <button className="button-secondary" onClick={() => handleNavigation('piani')}>
             Piani
           </button>
@@ -78,9 +78,9 @@ const Navigation = () => {
             <button onClick={() => handleNavigation('mappa')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Mappa</button>
             <button onClick={() => handleNavigation('ricompense')} className="text-white hover:text-white font-medium px-4 py-2 hover:bg-[#5a8f67] rounded-lg transition-all text-left hover:scale-105">Ricompense</button>
             <hr className="border-white/10" />
-            <button className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
+            <Link to="/accedi" className="text-white hover:text-white/90 transition-colors font-medium px-4 py-2 bg-black/20 rounded-lg text-left backdrop-blur-sm">
               Accedi
-            </button>
+            </Link>
             <button className="button-secondary w-full" onClick={() => handleNavigation('piani')}>
               Piani
             </button>

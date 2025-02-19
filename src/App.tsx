@@ -7,6 +7,8 @@ import { BrowserRouter, Routes, Route, useLocation, useNavigate } from "react-ro
 import { useEffect } from "react";
 import Index from "./pages/Index";
 import ChiSiamo from "./pages/ChiSiamo";
+import Login from "./pages/Login";
+import Register from "./pages/Register";
 
 const queryClient = new QueryClient();
 
@@ -44,6 +46,8 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/chi-siamo" element={<ChiSiamo />} />
+          <Route path="/accedi" element={<Login />} />
+          <Route path="/registrati" element={<Register />} />
         </Routes>
       </BrowserRouter>
     </TooltipProvider>
