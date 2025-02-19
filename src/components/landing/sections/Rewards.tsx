@@ -6,6 +6,13 @@ import { useState } from "react";
 const Rewards = () => {
   const [showAllChallenges, setShowAllChallenges] = useState(false);
 
+  const handlePlusClick = () => {
+    const pianiSection = document.getElementById('piani');
+    if (pianiSection) {
+      pianiSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   const challenges = [
     {
       icon: Battery,
@@ -77,7 +84,13 @@ const Rewards = () => {
           <h3 className="text-2xl font-bold text-center mb-8">Sfide Disponibili</h3>
           <div className="max-w-2xl mx-auto space-y-6">
             {visibleChallenges.map((challenge, index) => (
-              <Card key={index} className="glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200">
+              <Card 
+                key={index} 
+                className={`glass-panel p-8 rounded-2xl hover:scale-[1.02] transition-transform duration-200 ${
+                  challenge.isPlusOnly ? 'cursor-pointer' : ''
+                }`}
+                onClick={() => challenge.isPlusOnly && handlePlusClick()}
+              >
                 <div className="flex items-center gap-6">
                   <div className="w-12 h-12 bg-accent-purple/10 rounded-full flex items-center justify-center flex-shrink-0">
                     <challenge.icon className="w-6 h-6 text-accent-purple" />
