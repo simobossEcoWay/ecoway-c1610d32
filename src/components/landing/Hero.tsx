@@ -1,4 +1,7 @@
+
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
+
 const Hero = () => {
   return <header className="container-padding py-12">
       {/* Hero content */}
@@ -38,6 +41,7 @@ const Hero = () => {
       }}>
           <button className="button-primary flex items-center gap-2">
             Scarica
+            <Download size={20} />
           </button>
           
         </motion.div>
