@@ -18,7 +18,7 @@ const Rewards = () => {
       icon: Battery,
       title: "Ricarica Completa",
       description: "Ricarica la batteria della tua macchina fino al 100%",
-      progress: 75,
+      progress: 0,
       points: 50,
       isPlusOnly: false
     },
@@ -26,7 +26,7 @@ const Rewards = () => {
       icon: Car,
       title: "Guida Efficiente",
       description: "Mantieni un consumo medio sotto i 15 kWh/100km per una settimana",
-      progress: 45,
+      progress: 0,
       points: 100,
       isPlusOnly: false
     },
@@ -34,7 +34,7 @@ const Rewards = () => {
       icon: Bike,
       title: "Mobilità Alternativa",
       description: "Usa la bici o i mezzi pubblici per 5 giorni consecutivi",
-      progress: 30,
+      progress: 0,
       points: 75,
       isPlusOnly: true
     },
@@ -42,7 +42,7 @@ const Rewards = () => {
       icon: Calendar,
       title: "Mobilità Elettrica",
       description: "Guida una macchina elettrica per 15 giorni di fila",
-      progress: 20,
+      progress: 0,
       points: 150,
       isPlusOnly: false
     },
@@ -50,7 +50,7 @@ const Rewards = () => {
       icon: TreePine,
       title: "Amante dei Parchi",
       description: "Frequenta un parco 10 volte in un mese",
-      progress: 40,
+      progress: 0,
       points: 80,
       isPlusOnly: false
     },
@@ -58,7 +58,7 @@ const Rewards = () => {
       icon: Footprints,
       title: "Camminatore Esperto",
       description: "Cammina tre chilometri in una giornata venti volte in un mese",
-      progress: 60,
+      progress: 0,
       points: 120,
       isPlusOnly: true
     }
