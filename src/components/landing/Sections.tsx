@@ -6,9 +6,9 @@ import Plans from "./sections/Plans";
 
 const Sections = () => {
   return <>
-    <Leaderboard />
-    <MapSection />
-    <Rewards />
+    <Rewards /> {/* Missioni (include sia Sfide che Ricompense) */}
+    <Leaderboard /> {/* Classifica */}
+    <MapSection /> {/* Mappa */}
     <Plans />
   </>;
 };
